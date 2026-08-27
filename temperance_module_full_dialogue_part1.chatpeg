@@ -1,0 +1,370 @@
+title: READ 1000 — Temperance
+authors: Built in lo-blocks from "Design_docs/Temperance/Temperance_Module_072826.pdf" + "Student Dialog Reading 1 MTSU SBA A"
+description: A simulated small-group discussion in READ 1000. With peers Danielle, Joe, and Karis and reading instructor Professor Booker, the student works across a brief background lecture and — mainly — an American Yawp textbook excerpt (read in chunks with mediating dialogue), a lithograph, and a magazine article the instructor hands out on paper, to complete Pulling It Together, a four-or-five-sentence synthesis comparing the historic temperance movement with today's approaches to drinking less.
+~~~~
+
+Part 1: Introduction — Meet Your Peers [id=part1]
+-------------------------------------------------
+
+// The Introduction (tmf_intro) is already showing in the Main Content tab
+// (the UseHistory `initial`). Dialogue is kept lean.
+
+Joe: Hey, Karis. Hey, Danielle.
+
+Karis: Hey. Before class starts, can I run something by you? It's about temperance — our topic today. [face=explaining]
+
+Joe: Sure. But, uh… what even is temperance? I feel like I should already know.
+
+Karis: What do YOU think it has to do with?
+
+::tmf_temp_guess
+
+--- wait @tmf_temp_guess.value ---
+
+Karis: I looked it up — it means holding yourself back from something. The history part is that the temperance movement tried to get people to stop drinking alcohol, or at least drink less.
+
+Joe: Huh. Interesting topic for a reading class.
+
+Karis: I actually know a little about it — my family's dealt with some of the alcohol stuff. So ask me if it helps. I'm no expert, but maybe I can ask the right questions.
+
+Danielle: Good to know. OK — here's Professor Booker.
+
+Part 2: Explore the Topic Background [id=part2]
+-----------------------------------------------
+
+tmf_main <- tmf_vks
+
+Professor Booker: Before we read, take a look at some words you'll meet in the texts. I'm not grading this — I just want to know how familiar each one is. Fill out the table on the right. [face=calm]
+
+--- wait Object.keys(@tmf_vks_grid.value).length >= 8 ---
+
+// The lecture is no longer parked in the pane or gated — it is an optional
+// reference on its own tab. The pane stays on tmf_vks until the textbook lands.
+
+Joe: I knew about half of those. Should I look the rest up before we read?
+
+Professor Booker: We'll get to vocabulary exercises later — the words come back around in context as we read.
+
+Danielle: Professor Hale's note is under its tab if you want the background — we'll hit the essentials as we go.
+
+Professor Booker: One tool before we start, because you'll use it on every reading here. Select any stretch of text with your mouse and an **Annotate** button pops up.
+
+Professor Booker: Click it and the highlight is saved. If you want to say something about it — a question, a definition, a "this connects to X" — add a note before you save. A plain highlight is fine too.
+
+Karis: I knew some of the religious part — the Second Great Awakening. I didn't know about the industrialization angle, though.
+
+Part 3: Main Readings [id=part3]
+--------------------------------
+
+// The textbook is read one paragraph at a time; each part appears only after
+// the peers have talked through the one before it (chunking + mediating dialog).
+
+tmf_main <- tmf_tb_a
+
+Professor Booker: Now the reading that matters most for the comparison we're building: the textbook chapter. Read the first part and highlight as you go. It's on the right --->
+
+Professor Booker: Click **Mark as read** under it when you're through, and we'll talk it over.
+
+--- wait @tmf_tb_a_done.value ---
+
+Joe: I'm confused — what did it mean for "traditional" Protestant Christianity to be "at low tide," and why did that matter?
+
+Karis: Think back to Professor Hale's lecture — she talked about the changes the Industrial Revolution brought, and how some were hard for people to adjust to. For a lot of people, faith was a way to deal with hard things.
+
+Danielle: And from the lecture, the main point about Protestantism is that it was the largest religious group in the U.S. — but it also held different values than other groups, like Catholics.
+
+Professor Booker: Let's build some vocabulary from this part. Look at the highlighted sentence on the right for each word.
+
+Danielle: First one — what does "commerce" mean here?
+
+::tmf_q_commerce_screen
+
+--- wait @tmf_q_commerce.value === 'buying_selling' ---
+
+Joe: Next: antidote. I looked it up, and here are the definitions I found.
+
+::tmf_q_antidote_screen
+
+--- wait @tmf_q_antidote.value === 'counteracts_harm' ---
+
+Danielle: I think you pasted in a couple of definitions for "anecdote," not "antidote."
+
+Joe: Oops. Sorry about that.
+
+Karis: Plus, that's a tricky one — one of the meanings of "antidote" IS "a medicine that saves you from poison," but that's not how it's used in the textbook chapter.
+
+Joe: Yeah, I see that. In the textbook, they don't mean an actual medicine — it's something that counteracts a harmful situation.
+
+Danielle: One more from this part — "proliferated."
+
+::tmf_q_proliferated_screen
+
+--- wait @tmf_q_proliferated.value === 'increased_rapidly' ---
+
+tmf_main <- tmf_tb_a2
+
+Professor Booker: Here's the next part of the chapter, on the right --->
+
+Danielle: **Mark as read** when you're done — Karis has a question about this one.
+
+--- wait @tmf_tb_a2_done.value ---
+
+Karis: Now I'm kind of stuck. The people here are middle-class evangelicals — especially women. I get the classes — upper, middle, working — but I've heard "evangelical" without really understanding it.
+
+Danielle: From the lecture, evangelicals are a group within Protestantism who emphasized the Bible and sharing their faith — not one specific church or organization. The groups from the last paragraph, like the American Bible Society, were evangelical.
+
+Joe: I'm interested in what the textbook says about women. I can imagine how, back then, men drinking heavily caused problems that really affected women's lives.
+
+Professor Booker: Now a term that's special to history. Look at the chapter title — can you guess it?
+
+Danielle: Benevolent Empire!
+
+Professor Booker: The chapter's title points to it. Using the passage, which phrase most directly tells us what it was?
+
+::tmf_be_term_screen
+
+--- wait @tmf_be_term.value === 'powerful_network' ---
+
+Professor Booker: The phrase that captures it is "a powerful network." What else in the chapter connects to it? Select all that apply.
+
+::tmf_be_connect_screen
+
+--- wait @tmf_be_connect.value.length === 3 && @tmf_be_connect.value.includes('societies_movements') && @tmf_be_connect.value.includes('middle_class') && @tmf_be_connect.value.includes('religion_and_reform') ---
+
+Professor Booker: Now put it together. Each of you wrote a one-sentence definition — read them and pick the best.
+
+::tmf_be_bestdef_screen
+
+--- wait @tmf_be_bestdef.value === 'joe_network_religion_reform' ---
+
+tmf_main <- tmf_tb_b
+
+Professor Booker: On to the next part of the excerpt, over on the right --->
+
+Karis: mark it read when you're through. I want to get to the women's-rights part.
+
+--- wait @tmf_tb_b_done.value ---
+
+Danielle: Wow — whiskey cheaper than milk and safer to drink than water? I just filled my bottle at the drinking fountain before class for free.
+
+Karis: I'm remembering that Professor Hale said that before the temperance movement, people drank about three times as much alcohol as they do today. This kind of helps explain why.
+
+Danielle: There's a word here — "galvanized." I looked it up, and there are a bunch of definitions. Which one is right in this context?
+
+::tmf_q_galvanized_screen
+
+--- wait @tmf_q_galvanized.value === 'spurred_into_action' ---
+
+tmf_main <- tmf_notecheck
+
+Karis: I picked "to spur into action."
+
+Danielle: Me too. The support got energized — people actually started doing something. Nobody was coating anything in metal.
+
+Joe: I also jotted some notes on the chapter so far. Can you check them? And even if something's right, is it important enough to use when we pull the texts together at the end?
+
+Joe: Here's my list. Sort each statement on the right, then press Check.
+
+--- wait @tmf_notecheck_problem.submitCount > 0 ---
+
+tmf_main <- tmf_tb_c
+
+Karis: One of those is off, Joe. The textbook said the Industrial Revolution LED TO the social problems. It wasn't a response to them.
+
+Joe: Ah — good catch. Thanks.
+
+Danielle: Lyman Beecher's role in the movement and when those reform societies were growing are good pieces of information, but they're details. The network, the Awakening, and the women's role are the ideas that belong in our final summary.
+
+Professor Booker: Here's the last part of the excerpt. These next few words are a kind of paraphrasing — find words that could take the term's place without changing the meaning.
+
+Professor Booker: **Mark as read** when you've found them.
+
+--- wait @tmf_tb_c_done.value ---
+
+Karis: I'll start — what could replace "eradicating"?
+
+::tmf_q_eradicating_screen
+
+--- wait @tmf_q_eradicating.value === 'completely_removing' ---
+
+Joe: How about "exacerbated"?
+
+::tmf_q_exacerbated_screen
+
+--- wait @tmf_q_exacerbated.value === 'made_worse' ---
+
+Professor Booker: One more — "per capita."
+
+::tmf_q_per_capita_screen
+
+--- wait @tmf_q_per_capita.value === 'per_person' ---
+
+tmf_main <- tmf_grammar_svo
+
+Joe: Can we look again at the sentence I highlighted — "Such intrusions by the Protestant middle class exacerbated class, ethnic, and religious tensions"?
+
+Professor Booker: A good sentence to analyze. On the right, highlight the verb first — then the subject, then the object. Each one may be a single word or a whole phrase.
+
+--- wait @tmf_grammar_svo_verb_problem.submitCount > 0 && @tmf_grammar_svo_subject_problem.submitCount > 0 && @tmf_grammar_svo_object_problem.submitCount > 0 ---
+
+tmf_main <- tmf_grammar_np
+
+Professor Booker: Notice the subject is a noun phrase. On the right it's on its own, without the rest of the sentence — take it apart. The head noun first, then the determiner, then the postmodifier.
+
+--- wait @tmf_grammar_np_head_problem.submitCount > 0 && @tmf_grammar_np_det_problem.submitCount > 0 && @tmf_grammar_np_post_problem.submitCount > 0 ---
+
+tmf_main <- tmf_grammar_structure
+
+tmf_main <- tmf_grammar_antecedent
+
+Professor Booker: Here's the whole structure laid out on the right.
+
+Danielle: Wait — what intrusions is it even talking about?
+
+Professor Booker: Good question. We need the antecedent. On the right, find the earlier sentence that describes the intrusions and highlight the whole thing, start to finish.
+
+--- wait @tmf_grammar_antecedent_problem.submitCount > 0 ---
+
+Professor Booker: So, using that, why did those intrusions "exacerbate" tensions?
+
+::tmf_why_exacerbated_screen
+
+--- wait @tmf_why_exacerbated.value === 'middle_class_intrusion' ---
+
+// The comprehension questions are embedded HERE, in the conversation, so the
+// activity pane is free to hold the text they are about (tmf_comp_reading — all
+// four Yawp parts end to end). Answering with the passage closed was a memory
+// test; answering with it open on the right is reading.
+
+tmf_main <- tmf_comp_reading
+
+Professor Booker: Let's check your understanding of the excerpt. The whole thing is on the right now, all four parts end to end, with your highlights on it — scroll it while you answer. [face=calm]
+
+Danielle: First one's about the Second Great Awakening. That's the top of part 1.
+
+::tmf_comp_q1
+
+--- wait @tmf_comp_q1.submitCount > 0 ---
+
+Joe: This next one I remember — scroll down to part 2, the bit about who had the time to do all this reforming.
+
+::tmf_comp_q2
+
+--- wait @tmf_comp_q2.submitCount > 0 ---
+
+Karis: Part 3 now. Watch what the reformers were asking for at the start versus later on.
+
+::tmf_comp_q3
+
+--- wait @tmf_comp_q3.submitCount > 0 ---
+
+Karis: And part 4 — this is the women's part, the one I wanted to get to.
+
+::tmf_comp_q4
+
+--- wait @tmf_comp_q4.submitCount > 0 ---
+
+Professor Booker: Last one. Scroll to the end of part 4 and find the evidence that the movement actually worked.
+
+::tmf_comp_q5
+
+--- wait @tmf_comp_q5.submitCount > 0 ---
+
+Danielle: Half of what they drank twenty years earlier. That's the number I'd put in the comparison at the end.
+
+tmf_main <- tmf_litho_read
+
+Professor Booker: Nice work on the chapter. Before we bring in a modern article, let's look at an image from the temperance era itself — it connects directly to what we just read. It's on the right --->
+
+Karis: Whoa — it's like a staircase of a man's whole life, going up and then crashing down.
+
+Professor Booker: Look closely at the nine steps, then answer.
+
+::tmf_litho_observe_screen
+
+--- wait @tmf_litho_observe.value === 'one_mans_decline' ---
+
+Joe: Grim. Why would the temperance folks make something like this?
+
+::tmf_litho_purpose_screen
+
+--- wait @tmf_litho_purpose.value === 'warn_and_persuade' ---
+
+tmf_main <- tmf_article_read
+
+Professor Booker: Images like this were made to persuade. Now for the third text — a recent magazine article that connects the temperance era to today. I handed out a paper copy; take it out and read it, marking it up as you go. The instructions are on the right --->
+
+Professor Booker: When you've been through it, press "I've read the handout" on the right and we'll talk about it.
+
+--- wait @tmf_article_read_done.value ---
+
+Karis: Wow — Carrie Nation really went after those saloons.
+
+Danielle: Ha — she'd have fit right into the temperance movement. Dr. Booker wanted us to think about "self-optimization." But first, this word:
+
+::tmf_q_teetotaling_screen
+
+--- wait @tmf_q_teetotaling.value === 'no_alcohol_at_all' ---
+
+Joe: So, teetotaling — not drinking at all. Where does "self-optimization" come in? Let's each find a sentence that gives it context, then pick the best.
+
+::tmf_selfoptim
+
+--- wait @tmf_selfoptim_pick.value === 'joe_authenticity_selfcare' && @tmf_selfoptim_explain.value ---
+
+Karis: The line that really pins down self-optimization is the one about not drinking being an act of authenticity or self-care. Put it with the bit about posting on Instagram about inflammation, jawlines, and sleep scores, and you can see it's about focusing on your own health.
+
+Professor Booker: Now, to see how it all fits, let's summarize. Which is the best summary of the article's first paragraph?
+
+::tmf_summary_pick_screen
+
+--- wait @tmf_summary_pick.value === 'what_and_why' ---
+
+Professor Booker: One more term the article flags — "authenticity."
+
+::tmf_q_authenticity_screen
+
+--- wait @tmf_q_authenticity.value === 'true_to_self' ---
+
+Professor Booker: Now step back from the details. What is the article's main point overall?
+
+::tmf_article_thesis_screen
+
+--- wait @tmf_article_thesis.value === 'new_temperance_new_morality' ---
+
+Danielle: So underneath, the old movement and today's movement are actually pretty different.
+
+Part 4: Building Understanding and Synthesizing [id=part4]
+----------------------------------------------------------
+
+tmf_main <- tmf_synth_sort
+
+Professor Booker: Let's pull all three texts together. On the right, sort each description under the movement it fits, then press Check.
+
+--- wait @tmf_synth_sort_problem.submitCount > 0 ---
+
+Danielle: Each of us also tried to sum up the big difference in one sentence. Whose comparison is best?
+
+::tmf_synth_peereval_screen
+
+--- wait @tmf_synth_peereval.value === 'danielle_moral_vs_health' ---
+
+Part 5: Conclusion [id=part5]
+-----------------------------
+
+tmf_main <- tmf_final_write_screen
+
+Professor Booker: You're ready for the goal we set at the start — pulling it all together. On the right, write four or five sentences comparing the historic temperance movement with today's approaches to drinking less. Draw on the textbook, the printed article, and the lithograph.
+
+// Soft gate: any real start opens it. The old `>= 40` turned a writing task into
+// a word count, and students wrote to the number.
+
+--- wait wordcount(@tmf_final_write.value) >= 1 ---
+
+tmf_main <- tmf_conclusion
+
+Professor Booker: That's the comparison we've been building toward all along. [face=calm]
+
+Karis: We actually pulled all of that into one real comparison. Thanks for working through it with me, everyone.
+
+Danielle: Anytime. See you in class.

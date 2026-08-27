@@ -1,0 +1,1162 @@
+<!--
+---
+description: "Activity bank for the READ 1000 Temperance module. Holds the Main Content screens the study-group conversation pulls into the right-hand panel — the vocabulary self-check, Professor Hale's brief background lecture, the American Yawp textbook excerpt (revealed in three chunks), the note-checking table, the close-reading / grammar tasks, the reading-comprehension check, the lithograph, and the cue to read the magazine article the instructor hands out on paper — plus the vocabulary, Benevolent Empire, and article questions that appear inline in the chat. Launchable so it can be previewed and edited on its own."
+category: writing
+index: 55
+lang: en-Latn-US
+---
+-->
+
+<!--
+  READ 1000 — Temperance  (Activity bank)
+
+  A lo-blocks build of "Design_docs/Temperance/Temperance_Module_072826.pdf",
+  with one deliberate departure the course team requested:
+    * "Joe's notes" (the note-checking matrix) tests the TEXTBOOK excerpt, not
+      the lecture.
+
+  Layout (see temperance_module_full_sba_part1.olx). The tab strip is the top
+  level; its first tab, "Main Content," is the session itself:
+    * Left  pane : the scripted small-group conversation
+                   (temperance_module_full_dialogue_part1.chatpeg). Peers Danielle,
+                   Joe, and Karis and the reading instructor Professor Booker.
+    * Right pane : a UseHistory (tmf_main) the conversation drives via
+                   `tmf_main <- <id>` set commands (the new chatpeg assignment
+                   arrow; the old `->` is retired).
+  Each READING screen below — the lecture, the four textbook parts, the
+  lithograph — also gets its own tab, via <Use ref="..."> of the same block, so a
+  student can reopen it (with their own highlights) at any point.
+
+  The textbook is CHUNKED across four Main Content readings (tmf_tb_a/a2/b/c),
+  one per paragraph, so peer dialogue can mediate each passage before the next
+  appears and before the items that depend on it.
+  This FULL build carries the module through all five parts: textbook, lithograph,
+  article, a then/now synthesis, and Pulling It Together — the culminating
+  four-or-five-sentence synthesis.
+-->
+
+<Vertical id="temperance_module_full_activities_part1" title="Temperance (Activities)" launchable="true">
+
+  <!-- ============================================================
+       Part 1 — Introduction (PDF p.1)
+       ============================================================ -->
+
+  <Vertical id="tmf_intro">
+    <Markdown id="tmf_intro_md">
+# READ 1000
+
+## Introduction
+
+In this module, you will participate in a simulated small group discussion — the classmates and professors in it are not real people — in
+READ 1000. Your goal is to use the skills you are learning in the course
+(identifying key vocabulary; using academic language; synthesizing key ideas;
+and thinking like a historian) to complete **Pulling It Together: four or five sentences comparing the
+historic temperance movement with today's approaches to drinking less.** You'll
+build it from the texts you read — the kind of comparison a U.S. History student makes.
+
+You'll work with several texts for this project:
+
+- a short **background lecture** on the temperance movement
+- an **excerpt** from the *American Yawp* textbook (your main reading)
+- a **magazine article** — your instructor hands this one out **on paper**, and
+  you'll read and mark it there
+- a **lithograph** (a kind of image) about the topic from the 19th century
+
+You'll work with three simulated peers: **Danielle, Joe, and Karis.** Your
+simulated Reading instructor is **Professor Booker.** Your simulated History
+instructor is **Professor Hale.**
+
+It will take about one hour to complete this module. It's required as part of
+READ 1000, and you have until the date your instructor sets to complete it.
+
+This module is a little bit different from participating in our READ 1000 class.
+Danielle, Joe, Karis, Professor Booker, and Professor Hale are **not real
+people,** but you can learn from and interact with them.
+
+**About answering questions.** You can change any answer as many times as you
+like, and on some questions the conversation waits until you land on the right
+one. When we look over your work, though, it's mostly your **first** answer we
+pay attention to — so think it through before you click, and then fix it freely.
+
+All right, now imagine that you are in your classroom, but class has not started
+yet. You are talking to Danielle, Joe, and Karis. Click **Continue** in the
+conversation on the left to begin.
+    </Markdown>
+  </Vertical>
+
+  <!-- ============================================================
+       Part 2 — Vocabulary self-check / VKS table (PDF p.7)
+       Ungraded: "there is no right or wrong answer."
+       ============================================================ -->
+
+  <Vertical id="tmf_vks">
+    <Markdown id="tmf_vks_prompt">
+## Before We Read: How Familiar Are These Words?
+
+Take a look at some words that you will see in the texts. This is **not graded**
+— there is no right or wrong answer. It's useful information for your
+instructor. For each word, choose the option that best describes how well you
+know it.
+    </Markdown>
+    <TabularMCQ id="tmf_vks_grid">
+cols:
+  - I have never seen this word.
+  - "I have seen it, but I'm not sure what it means."
+  - I think I know what it means in context.
+  - I know this word and could use it in a sentence.
+rows:
+  - antidote|w_antidote
+  - commerce|w_commerce
+  - endemic|w_endemic
+  - exacerbated|w_exacerbated
+  - galvanized|w_galvanized
+  - per capita|w_percapita
+  - prohibit|w_prohibit
+  - proliferated|w_proliferated
+    </TabularMCQ>
+  </Vertical>
+
+  <!-- ============================================================
+       Part 2 — Professor Hale's brief background lecture (PDF p.9)
+       OPTIONAL REFERENCE. The lecture is no longer parked in the activity
+       pane and no longer gated: it costs minutes the 60-minute module does
+       not have, and the peers surface its content in dialogue anyway. It
+       keeps its tab, so a student who wants the background can read it at
+       any time. Still an Annotate, not plain Markdown: the lecture text
+       itself tells students to "use the highlighting tools to take notes."
+       No <Done> — nothing waits on it.
+       ============================================================ -->
+
+  <Vertical id="tmf_lecture_read">
+    <Annotate id="tmf_lecture_annotate" title="Professor Hale's Lecture">
+      <Markdown id="tmf_lecture_md" src="readings/lecture_hale.md" />
+    </Annotate>
+  </Vertical>
+
+  <!-- ============================================================
+       Part 3 — Textbook, CHUNK A: paragraph 1 (PDF p.13)
+       The Benevolent Empire network. Highlightable.
+       ============================================================ -->
+
+  <Vertical id="tmf_tb_a">
+    <Annotate id="tmf_tb_a_annotate" title="American Yawp — The Benevolent Empire (part 1)">
+      <Markdown id="tmf_tb_a_md" src="readings/american-yawp/benevolent_empire_1.md" />
+    </Annotate>
+    <Done id="tmf_tb_a_done" label="Mark as read" />
+  </Vertical>
+
+  <!-- ============================================================
+       Part 3 — Textbook, CHUNK A2: paragraph 2
+       Middle-class evangelicals + women reformers. Highlightable.
+       ============================================================ -->
+
+  <Vertical id="tmf_tb_a2">
+    <Annotate id="tmf_tb_a2_annotate" title="American Yawp — The Benevolent Empire (part 2)">
+      <Markdown id="tmf_tb_a2_md" src="readings/american-yawp/benevolent_empire_2.md" />
+    </Annotate>
+    <Done id="tmf_tb_a2_done" label="Mark as read" />
+  </Vertical>
+
+  <!-- ============================================================
+       Part 2 — Check Joe's notes ON THE TEXTBOOK (PDF p.11 format,
+       retargeted from the lecture to the American Yawp excerpt).
+       3-way scale: correct and central / correct but less important /
+       not correct. Answers keyed to the textbook excerpt.
+       ============================================================ -->
+
+  <Vertical id="tmf_notecheck">
+    <Markdown id="tmf_notecheck_prompt">
+## Checking Joe's Notes on the Textbook
+
+Joe made a list of what he thought were the important points from the *American
+Yawp* excerpt. For **each statement**, decide whether it is **correct and central
+to the text**, **correct but less important**, or **not correct**. Then press
+**Check**.
+    </Markdown>
+    <CapaProblem id="tmf_notecheck_problem" title="Joe's Notes on the Textbook" showanswer="always">
+      <TabularMCQGrader id="tmf_notecheck_grader">
+        <TabularMCQ id="tmf_notecheck_grid">
+cols:
+  - Correct and central to the text
+  - Correct but less important
+  - Not correct
+rows:
+  - "The Second Great Awakening revitalized Christian faith and inspired both personal and social reform.|n_awakening[Correct and central to the text]"
+  - "Lyman Beecher championed the temperance movement.|n_beecher[Correct but less important]"
+  - "Middle-class women played a leading role in reform activity.|n_women[Correct and central to the text]"
+  - "The Industrial Revolution was a response to increasing social problems and urban growth.|n_indrev[Not correct]"
+  - "The Benevolent Empire was a powerful network that melded religion and reform.|n_network[Correct and central to the text]"
+  - "Social reform societies grew significantly between 1815 and 1861.|n_societies[Correct but less important]"
+        </TabularMCQ>
+      </TabularMCQGrader>
+    </CapaProblem>
+  </Vertical>
+
+  <!-- ============================================================
+       Part 3 — Textbook, CHUNK B: para 3 (PDF p.18)
+       The temperance crusade (galvanized / endemic / distilleries).
+       ============================================================ -->
+
+  <Vertical id="tmf_tb_b">
+    <Annotate id="tmf_tb_b_annotate" title="American Yawp — The Benevolent Empire (part 3)">
+      <Markdown id="tmf_tb_b_md" src="readings/american-yawp/benevolent_empire_3.md" />
+    </Annotate>
+    <Done id="tmf_tb_b_done" label="Mark as read" />
+  </Vertical>
+
+  <!-- ============================================================
+       Part 3 — Textbook, CHUNK C: para 4 (PDF p.19-21)
+       Women reformers, class/ethnic tensions (eradicating /
+       exacerbated / per capita). Used for the grammar tasks too.
+       ============================================================ -->
+
+  <Vertical id="tmf_tb_c">
+    <Annotate id="tmf_tb_c_annotate" title="American Yawp — The Benevolent Empire (part 4)">
+      <Markdown id="tmf_tb_c_md" src="readings/american-yawp/benevolent_empire_4.md" />
+    </Annotate>
+    <Done id="tmf_tb_c_done" label="Mark as read" />
+  </Vertical>
+
+  <!-- ============================================================
+       Part 3 — Academic language / close reading (PDF p.25-29)
+       Graded text-highlighting on the key sentence, via
+       SimpleTextSelection (mode=graded → Check button; the
+       generated problem is <id>_problem, gated on submitCount).
+       ============================================================ -->
+
+  <!-- p.25 — three highlight questions on the key sentence: the head noun /
+       verb / object head MUST be selected; the rest of its phrase MAY be
+       ({optional} brackets), so a student who highlights the whole NP is just
+       as right as one who picks the single head word.
+
+       Order is VERB → SUBJECT → OBJECT, not S-V-O. The verb is the one part
+       you can find without having identified anything else; once you have it,
+       "who did it" and "what got done to" are questions about the verb. Asking
+       for the subject first asks students to find it out of nowhere. -->
+  <Vertical id="tmf_grammar_svo">
+    <Markdown id="tmf_grammar_svo_md">
+## Verb, Subject, Object
+
+Three quick highlights on the key sentence — the verb first, then the subject,
+then the object.
+
+A part may be a **single word or a whole phrase**. For each one you **must**
+include the essential word; beyond that, highlight as much or as little of the
+rest of its phrase as you see fit.
+    </Markdown>
+
+    <SimpleTextSelection id="tmf_grammar_svo_verb" mode="graded" title="Highlight the verb">
+Highlight the verb.
+---
+Such intrusions by the Protestant middle class [exacerbated] class, ethnic, and religious tensions.
+---
+all: Right — "exacerbated" is the verb: it's what the intrusions *did*.
+: The verb is the action word — what happened in this sentence?
+    </SimpleTextSelection>
+
+    <SimpleTextSelection id="tmf_grammar_svo_subject" mode="graded" title="Highlight the subject">
+Highlight the subject of the sentence.
+---
+{Such} [intrusions] {by the Protestant middle class} exacerbated class, ethnic, and religious tensions.
+---
+all: Right — "intrusions" is the heart of the subject, and the whole phrase "Such intrusions by the Protestant middle class" works too.
+: The subject is who or what does the action. What did the exacerbating?
+    </SimpleTextSelection>
+
+    <SimpleTextSelection id="tmf_grammar_svo_object" mode="graded" title="Highlight the object">
+Highlight the direct object — what received the action.
+---
+Such intrusions by the Protestant middle class exacerbated {class, ethnic, and religious} [tensions].
+---
+all: Right — "tensions" is what got exacerbated, and the full phrase "class, ethnic, and religious tensions" works too.
+: What did the intrusions exacerbate? Find that noun.
+    </SimpleTextSelection>
+  </Vertical>
+
+  <!-- p.26 — inside the subject NP. Three sequential highlights, matching the
+       SVO screen's one-question-at-a-time pattern: asking for premodifier, head
+       noun, and postmodifier all at once in a single selection gave a student no
+       way to be partly right and no feedback until all three landed.
+
+       The text shown is ONLY the noun phrase, not the whole sentence: the rest
+       of the sentence is nothing but a place to make mistakes here.
+
+       "Determiner," not "premodifier" — it is the word the course actually uses
+       for "Such," and it names a category rather than a position. -->
+  <Vertical id="tmf_grammar_np">
+    <Markdown id="tmf_grammar_np_md">
+## Inside the Noun Phrase
+
+The subject of that sentence is a noun phrase all by itself. Here it is on its
+own — take it apart in three steps.
+    </Markdown>
+
+    <SimpleTextSelection id="tmf_grammar_np_head" mode="graded" title="Highlight the head noun">
+Highlight the head noun — the **one word** the whole phrase is built around.
+---
+Such [intrusions] by the Protestant middle class
+---
+all: Right — "intrusions" is the head noun. Everything else in the phrase is there to tell you which intrusions.
+: It is a single word, and it is the thing the phrase is naming. Which one word could stand in for the whole phrase?
+    </SimpleTextSelection>
+
+    <SimpleTextSelection id="tmf_grammar_np_det" mode="graded" title="Highlight the determiner">
+Highlight the determiner — the word in front of the head noun that points at *which* ones.
+---
+[Such] intrusions by the Protestant middle class
+---
+all: Right — "Such" is the determiner. It points back at intrusions already described, which is why the next task is finding them.
+: It comes before the head noun, and words like "the," "these," "his," and "such" do this job.
+    </SimpleTextSelection>
+
+    <SimpleTextSelection id="tmf_grammar_np_post" mode="graded" title="Highlight the postmodifier">
+Highlight the postmodifier — the part after the head noun that tells you more about it.
+---
+Such intrusions [by the Protestant middle class]
+---
+all: Right — "by the Protestant middle class" is the postmodifier. It tells you whose intrusions they were.
+: It follows the head noun, and here it is a whole phrase rather than a single word.
+    </SimpleTextSelection>
+  </Vertical>
+
+  <!-- p.27 — the structure, laid out (info screen) -->
+  <Vertical id="tmf_grammar_structure">
+    <Markdown id="tmf_grammar_structure_md">
+## The Grammatical Structure
+
+Here is the sentence laid out:
+
+> **[ Such intrusions by the Protestant middle class ]** — subject (a noun phrase)
+> **exacerbated** — verb
+> **[ class, ethnic, and religious tensions ]** — direct object (a noun phrase)
+
+Both the subject and the object are **noun phrases** — to understand the
+sentence, you hold each whole phrase together.
+    </Markdown>
+  </Vertical>
+
+  <!-- p.28 — highlight the antecedent of "Such intrusions" -->
+  <SimpleTextSelection id="tmf_grammar_antecedent" mode="graded" title="Find the Antecedent">
+"Such intrusions" points back to an earlier sentence. Find the sentence that describes those intrusions — its antecedent — and highlight **the entire sentence**, from its first word through its final period.
+---
+In response to the perception that heavy drinking was associated with men who abused, abandoned, or neglected their family obligations, women formed a significant presence in societies dedicated to eradicating liquor. Temperance became a hallmark of middle-class respectability among both men and women and developed into a crusade with a visible class character. [Temperance, like many other reform efforts, was championed by the middle class and threatened to intrude on the private lives of lower-class workers, many of whom were Irish Catholics.] Such intrusions by the Protestant middle class exacerbated class, ethnic, and religious tensions. Still, while the temperance movement made less substantial inroads into lower-class workers' drinking culture, the movement was still a great success for reformers.
+---
+all: Yes — that earlier sentence describes the intrusion (the middle class threatening to intrude on lower-class, largely Irish Catholic workers) that "Such intrusions" refers back to.
+: "Such intrusions" must point to an intrusion already named. Find the sentence that describes the middle class intruding on workers' lives.
+  </SimpleTextSelection>
+
+  <!-- ============================================================
+       Part 3 — Reading comprehension check (PDF p.30-34)
+
+       The five questions used to sit in a `tmf_comprehension` screen in the
+       activity pane, which put the questions exactly where the text would
+       otherwise be: a comprehension check with the passage nowhere in sight is
+       a memory test. They are now CHAT-EMBEDDED, one at a time with a peer
+       lead-in, on the same pattern as the vocabulary questions — and the pane
+       holds the text (tmf_comp_reading, below) for the whole stretch, so a
+       student answers with the excerpt open beside them.
+
+       Each is a single-question MarkupProblem, so it carries its own Check
+       button and per-item feedback and the chat can wait on .submitCount.
+       ============================================================ -->
+
+  <!-- The pane for the comprehension stretch: all four Yawp parts end to end in
+       one scrollable view. <Use> of the same four Annotate blocks the reading
+       walked through and the Textbook 1-4 tabs show — one block, one state — so
+       a student's highlights are here waiting for them. The <Done> buttons are
+       deliberately not included: those live on the tmf_tb_* screens, and this
+       is a place to read from, not another thing to finish. -->
+  <Vertical id="tmf_comp_reading">
+    <Markdown id="tmf_comp_reading_intro">
+## The Excerpt — All Four Parts
+
+The whole *American Yawp* excerpt, end to end, with your highlights still on it.
+Scroll through it as you answer the questions in the conversation.
+    </Markdown>
+    <Use ref="tmf_tb_a_annotate" />
+    <Use ref="tmf_tb_a2_annotate" />
+    <Use ref="tmf_tb_b_annotate" />
+    <Use ref="tmf_tb_c_annotate" />
+  </Vertical>
+
+  <!-- CHAT-EMBEDDED — the five comprehension questions -->
+
+  <MarkupProblem id="tmf_comp_q1" title="Question 1"><![CDATA[
+>>How did the Second Great Awakening address the rapid social and economic changes of the post-independence era?<<
+
+( ) By advocating for the total prohibition of all commercial distilleries.
+( ) By promoting traditional Protestant Christianity while rejecting reform movements.
+(x) By revitalizing Christian spirits and inspiring personal and social reform.
+( ) By discouraging middle-class involvement in charitable organizations.
+
+[explanation]
+The passage calls the Second Great Awakening "a spiritual response to such changes, revitalizing Christian spirits while also providing an institutional antidote... by inspiring both personal and social reform."
+[/explanation]
+]]></MarkupProblem>
+
+  <MarkupProblem id="tmf_comp_q2" title="Question 2"><![CDATA[
+>>Why were middle-class evangelicals able to devote significant time and resources to reform campaigns?<<
+
+(x) The Industrial Revolution provided them with the necessary time and resources.
+( ) They were financially supported by churches and the government.
+( ) They were mandated to do so by the American Tract Society.
+( ) Working-class laborers funded their reform efforts.
+
+[explanation]
+"Because of the Industrial Revolution, middle-class evangelicals had time and resources to devote to reform campaigns."
+[/explanation]
+]]></MarkupProblem>
+
+  <MarkupProblem id="tmf_comp_q3" title="Question 3"><![CDATA[
+>>How did temperance reformers shift their approach as alcoholism became an increasingly visible issue in towns and cities?<<
+
+( ) They shifted from demanding total prohibition to encouraging moderate consumption.
+( ) They focused exclusively on taxing commercial distilleries rather than trying to get people to stop drinking.
+(x) They shifted from advocating moderate drinking to demanding full abstinence from all alcohol.
+( ) They stopped seeking legal bans on liquor sales altogether.
+
+[explanation]
+"Most reformers escalated their efforts from advocating moderation in liquor consumption to full abstinence from all alcohol."
+[/explanation]
+]]></MarkupProblem>
+
+  <MarkupProblem id="tmf_comp_q4" title="Question 4"><![CDATA[
+>>What primary concern prompted many women to join societies dedicated to stopping drinking alcohol?<<
+
+( ) They could no longer afford to pay the high taxes imposed on household dairy products like milk.
+(x) They believed that heavy drinking was linked to men abusing, abandoning, or neglecting their families.
+( ) The women wanted to work in commercial distilleries, but it was against the law.
+( ) The women were opposed to the preaching of Lyman Beecher and the work of the American Tract Society.
+
+[explanation]
+Women formed a presence in these societies "in response to the perception that heavy drinking was associated with men who abused, abandoned, or neglected their family obligations."
+[/explanation]
+]]></MarkupProblem>
+
+  <MarkupProblem id="tmf_comp_q5" title="Question 5"><![CDATA[
+>>What evidence from the text demonstrates the ultimate success of the temperance movement by the 1840s?<<
+
+( ) Alcohol consumption completely ceased across all social classes.
+( ) All state legislatures permanently banned the production of alcohol.
+( ) Lower-class workers adopted Protestant drinking culture.
+(x) Americans in the 1840s drank half of what they had in the 1820s.
+
+[explanation]
+"In the 1840s, Americans drank half of what they had in the 1820s, and per capita consumption continued to decline over the next two decades."
+[/explanation]
+]]></MarkupProblem>
+
+  <!-- ============================================================
+       Part 3 — The magazine article (PDF p.36+)
+       The article is a copyrighted magazine piece, so it is NOT carried
+       online: the instructor hands it out ON PAPER and students read and
+       annotate the paper copy. This screen is the cue to pick it up; the
+       article questions that follow are unchanged.
+       ============================================================ -->
+
+  <Vertical id="tmf_article_read">
+    <Markdown id="tmf_article_md">
+## The Magazine Article — On Paper
+
+Your instructor handed out a printed copy of the magazine article about the
+"sober-curious" movement. **Read it on paper now.**
+
+Read it the same way you read the textbook on screen — with a pen or a
+highlighter in hand:
+
+- **Mark the three words** the article's introduction asks you to watch for:
+  *teetotaling*, *self-optimization*, and *authenticity.*
+- **Underline** anything that says what today's movement wants people to do
+  about alcohol, and why.
+- **Star** anything that reminds you of the *American Yawp* excerpt or the
+  lithograph — you'll need those connections shortly.
+
+Keep the handout beside you. The questions in the conversation on the left are
+all about it, and you'll draw on it again when you pull the three texts
+together at the end.
+
+*If you don't have a copy, ask your instructor before going on.*
+    </Markdown>
+    <!-- The reading happens off-screen, so the chat has nothing to watch except
+         this: the student tells us when the paper article has been read. -->
+    <Done id="tmf_article_read_done" label="I've read the handout" />
+  </Vertical>
+
+  <!-- ============================================================
+       Part 4 — The lithograph (third text). PDF p.42 planned it; the
+       image is the one on the last page of "Clean Copy SBA Temperance
+       Materials 3.24.docx": N. Currier's 1846 "The Drunkard's Progress."
+       ============================================================ -->
+
+  <Vertical id="tmf_litho_read">
+    <Markdown id="tmf_litho_intro">
+## A Temperance-Era Image
+
+Study this 19th-century lithograph. Notice the **arch** shape, the **nine
+numbered steps**, and the scene **beneath the arch.**
+    </Markdown>
+    <Image id="tmf_litho_img" src="images/drunkards_progress.jpg" width="820"
+           alt="'The Drunkard's Progress' (N. Currier, 1846): nine captioned figures form an arch rising on the left and falling on the right, tracing a man from a first friendly drink to death; beneath the arch a woman and child leave a ruined home."
+           authors="N. Currier, 1846" license="Public domain" />
+    <Markdown id="tmf_litho_caption">
+**"The Drunkard's Progress, from the first glass to the grave"** — N. Currier, 1846.
+
+The nine steps, in order:
+
+1. A glass with a friend.
+2. A glass to keep the cold out.
+3. A glass too much.
+4. Drunk and riotous.
+5. The summit attained. Jolly companions. A confirmed drunkard.
+6. Poverty and disease.
+7. Forsaken by friends.
+8. Desperation and crime.
+9. Death by suicide.
+
+*Beneath the arch, a woman and child leave a ruined home.*
+    </Markdown>
+  </Vertical>
+
+  <!-- ============================================================
+       Part 4 — Synthesis: sort each description as "then" (temperance)
+       vs "now" (sober-curious), drawing on all three texts. Graded.
+       ============================================================ -->
+
+  <Vertical id="tmf_synth_sort">
+    <Markdown id="tmf_synth_sort_prompt">
+## Then and Now
+
+Using the textbook, the printed article, and the lithograph, sort each description under
+the movement it best fits. Then press **Check.**
+    </Markdown>
+    <CapaProblem id="tmf_synth_sort_problem" title="Then vs. Now" showanswer="always">
+      <TabularMCQGrader id="tmf_synth_sort_grader">
+        <TabularMCQ id="tmf_synth_sort_grid">
+cols:
+  - "19th-century temperance movement"
+  - "Today's sober-curious movement"
+rows:
+  - "Focused on the individual's own health and self-optimization|s_health[Today's sober-curious movement]"
+  - "Grew out of religious revival and the campaign for women's rights|s_revival[19th-century temperance movement]"
+  - "Framed as authenticity, self-care, and a personal 'freedom to choose'|s_auth[Today's sober-curious movement]"
+  - "Used images like 'The Drunkard's Progress' to warn of moral ruin|s_litho[19th-century temperance movement]"
+  - "Framed as protecting the home, the family, and the nation|s_protect[19th-century temperance movement]"
+        </TabularMCQ>
+      </TabularMCQGrader>
+    </CapaProblem>
+  </Vertical>
+
+  <!-- ============================================================
+       Part 5 — Culminating writing task (Pulling It Together).
+       ============================================================ -->
+
+  <Vertical id="tmf_final_write_screen">
+    <Markdown id="tmf_final_write_prompt">
+## Pulling It Together
+
+This is the goal the whole module has been building toward.
+
+**In four or five sentences, explain the goals of the 1800s temperance movement
+and of the modern "sober-curious" movement. Then compare and contrast them: in
+what ways are the two movements alike, and how do they differ?**
+
+Draw on all three texts — the *American Yawp* excerpt, the lithograph, and the
+article your instructor handed out.
+    </Markdown>
+    <TextArea id="tmf_final_write" rows="8"
+              placeholder="Both movements discouraged drinking, but…" />
+
+    <!-- Progress affordance, three tiers. There is no longer a word minimum to
+         hit: the conversation moves on as soon as the student has really begun,
+         so tier 1 is encouragement rather than a countdown. The live word count
+         is gone with it — a number under a textarea reads as a target to reach
+         and stop at, which is exactly the behaviour a hard minimum produced. -->
+    <Markdown when="wordcount(@tmf_final_write.value) &lt; 40">
+*A solid comparison usually takes four or five sentences — keep going.*
+    </Markdown>
+    <Markdown when="wordcount(@tmf_final_write.value) &gt;= 40 &amp;&amp; wordcount(@tmf_final_write.value) &lt; 80">
+*✓ You can continue. Before you do, read it back: does it name **one way the movements are alike** and **one way they differ**? Does it draw on **all three texts** — the textbook, the lithograph, and the article?*
+    </Markdown>
+    <Markdown when="wordcount(@tmf_final_write.value) &gt;= 80">
+*✓ That's a full comparison.*
+    </Markdown>
+  </Vertical>
+
+  <!-- ============================================================
+       Part 5 — Conclusion / wrap-up (replaces the old in-progress note).
+       ============================================================ -->
+
+  <Vertical id="tmf_conclusion">
+    <Markdown id="tmf_conclusion_md">
+## You're Done
+
+Nice work — you've finished the module. Along the way you practiced the full
+range of READ 1000 reading skills on **three real texts:**
+
+- **using context for vocabulary** (antidote, galvanized, per capita, and more)
+- **close, academic-language reading** (the subject–verb–object of a hard sentence, and its antecedent)
+- **reading comprehension** across the textbook and the article
+- **organizing notes** under headings
+- **analyzing an image** as persuasion, and finally
+- **synthesizing** all three texts into four or five sentences comparing the historic temperance movement with today's approaches to drinking less.
+
+What you wrote above is the finished work — the comparison you built from all
+three texts.
+    </Markdown>
+  </Vertical>
+
+  <!-- ============================================================
+       CHAT-EMBEDDED — what do you think temperance means? (PDF p.3)
+       ============================================================ -->
+
+  <TextArea id="tmf_temp_guess" rows="3"
+            placeholder="Temperance means…  /  Temperance is about…  /  Temperance has to do with…" />
+
+  <!-- ============================================================
+       CHAT-EMBEDDED — vocabulary, chunk A / para 1 (PDF p.15-17)
+       ============================================================ -->
+
+  <!-- Each chat-embedded question is wrapped in a Vertical that TAKES OVER the
+       embed id (`::tmf_q_commerce_screen`), so the correctness feedback under
+       the choices renders inside the chat bubble with them. The ChoiceInput
+       keeps its own id — every wait, and every readback, still names it. -->
+
+  <Vertical id="tmf_q_commerce_screen">
+    <ChoiceInput id="tmf_q_commerce">
+      <Markdown>
+Look at the highlighted sentence and choose the best definition for **commerce**:
+
+> "…the Industrial Revolution had led to a host of social problems associated
+> with urban growth and large-scale **commerce**."
+      </Markdown>
+      <Distractor value="church_formation" > The way Christianity formed in the U.S.         </Distractor>
+      <Distractor value="population_study" > The study of how urban populations grow.        </Distractor>
+            <Key value="buying_selling"    > The activities of buying and selling products.  </Key>
+      <Distractor value="social_laws"      > The laws people make to limit social problems.  </Distractor>
+    </ChoiceInput>
+
+<Markdown when="@tmf_q_commerce.value === 'church_formation'">
+*Not quite — that's the religious half of the paragraph. "Large-scale commerce" sits next to "urban growth" — both are economic changes the Industrial Revolution brought.*
+    </Markdown>
+<Markdown when="@tmf_q_commerce.value === 'population_study'">
+*Not quite — that's the "urban growth" half of the sentence. "Commerce" is the other half — trade, not counting people.*
+    </Markdown>
+<Markdown when="@tmf_q_commerce.value === 'social_laws'">
+*Not quite — laws come later in the chapter, with prohibition. "Commerce" names the economic activity itself, not the rules made about it.*
+    </Markdown>
+<Markdown when="@tmf_q_commerce.value === 'buying_selling'">
+*Yes — commerce is buying and selling. "Large-scale commerce" means trade grown big enough to reshape whole cities.*
+    </Markdown>
+  </Vertical>
+
+  <Vertical id="tmf_q_antidote_screen">
+    <ChoiceInput id="tmf_q_antidote">
+      <Markdown>
+Choose the best definition for **antidote**:
+
+> "The Second Great Awakening was in part a spiritual response to such changes…
+> providing an institutional **antidote** to the insecurities of a rapidly
+> changing world."
+      </Markdown>
+      <Distractor value="anecdote_story"      > A short story about a real person or event.     </Distractor>
+      <Distractor value="poison_medicine"     > A medicine that saves you from poison.          </Distractor>
+      <Distractor value="unpublished_writing" > An unpublished writing.                         </Distractor>
+            <Key value="counteracts_harm"     > Something that counteracts a harmful situation.  </Key>
+    </ChoiceInput>
+
+<!-- The peers unpack the two "anecdote" definitions and the medicine reading in
+     the dialogue right after this, so the feedback here stays short. -->
+<Markdown when="@tmf_q_antidote.value === 'anecdote_story'">
+*Not quite — that's an **anecdote** — one letter off, an entirely different word.*
+    </Markdown>
+<Markdown when="@tmf_q_antidote.value === 'unpublished_writing'">
+*Not quite — also a definition of some other word — nothing in "antidote" is about writing.*
+    </Markdown>
+<Markdown when="@tmf_q_antidote.value === 'poison_medicine'">
+*Not quite — a real meaning of the word, but not this one: the Awakening was no literal medicine. Read it figuratively.*
+    </Markdown>
+<Markdown when="@tmf_q_antidote.value === 'counteracts_harm'">
+*Right — the figurative sense: something that works against a harm. Here, against the insecurities of a changing world.*
+    </Markdown>
+  </Vertical>
+
+  <Vertical id="tmf_q_proliferated_screen">
+    <ChoiceInput id="tmf_q_proliferated">
+      <Markdown>
+Choose the best definition for **proliferated**:
+
+> "These new societies **proliferated** in the United States between 1815 and
+> 1861…"
+      </Markdown>
+            <Key value="increased_rapidly"   > Increased rapidly in numbers.                 </Key>
+      <Distractor value="merged_into_one"    > Came together to form a single organization.  </Distractor>
+      <Distractor value="decreased_influence"> Decreased rapidly in influence.               </Distractor>
+      <Distractor value="moved_to_cities"    > Moved from farms to major cities.             </Distractor>
+    </ChoiceInput>
+
+<Markdown when="@tmf_q_proliferated.value === 'merged_into_one'">
+*Not quite — nearly the opposite: these societies multiplied and spread rather than folding into one body.*
+    </Markdown>
+<Markdown when="@tmf_q_proliferated.value === 'decreased_influence'">
+*Not quite — "Rapidly" is right; the direction isn't. Between 1815 and 1861 the societies were growing, not fading.*
+    </Markdown>
+<Markdown when="@tmf_q_proliferated.value === 'moved_to_cities'">
+*Not quite — that's the urban growth from the paragraph before. "Proliferated" is about number, not location.*
+    </Markdown>
+<Markdown when="@tmf_q_proliferated.value === 'increased_rapidly'">
+*Yes — to proliferate is to multiply fast. The societies didn't just appear; they kept appearing.*
+    </Markdown>
+  </Vertical>
+
+  <!-- CHAT-EMBEDDED — vocabulary, chunk B / para 3 (PDF p.18) -->
+
+  <Vertical id="tmf_q_galvanized_screen">
+    <ChoiceInput id="tmf_q_galvanized">
+      <Markdown>
+What is the best definition of **galvanized**?
+
+> "…the movement's effort to curb the consumption of alcohol **galvanized**
+> widespread support among the middle class."
+      </Markdown>
+      <Distractor value="gradually_built"       > To build up slowly, a little at a time.       </Distractor>
+            <Key value="spurred_into_action"    > To spur into action; to energize.             </Key>
+      <Distractor value="zinc_coating"          > To coat iron or steel with zinc.              </Distractor>
+      <Distractor value="wore_down"             > To discourage or wear down.                   </Distractor>
+    </ChoiceInput>
+
+<!-- Karis and Danielle name the figurative definition in the dialogue that
+     follows, so these lines only have to get a student there. The old options
+     were all worded around "electric shock," which sent students hunting for a
+     literal current instead of reading the sentence; the shock framing is gone. -->
+<Markdown when="@tmf_q_galvanized.value === 'gradually_built'">
+*Not quite — watch the pace. Galvanized support arrives all at once; something that builds up slowly is the opposite.*
+    </Markdown>
+<Markdown when="@tmf_q_galvanized.value === 'zinc_coating'">
+*Not quite — that's galvanized steel, a real but different sense of the word. The support wasn't coated in metal.*
+    </Markdown>
+<Markdown when="@tmf_q_galvanized.value === 'wore_down'">
+*Not quite — backwards. The sentence says the movement's effort won widespread support, not that it wore support down.*
+    </Markdown>
+<Markdown when="@tmf_q_galvanized.value === 'spurred_into_action'">
+*Right — the effort spurred the middle class into action and energized their support.*
+    </Markdown>
+  </Vertical>
+
+  <!-- CHAT-EMBEDDED — vocabulary, chunk C / para 4 (PDF p.19-21) -->
+
+  <Vertical id="tmf_q_eradicating_screen">
+    <ChoiceInput id="tmf_q_eradicating">
+      <Markdown>
+What words could take the place of **eradicating** — but keep the meaning the same?
+
+> "…women formed a significant presence in societies dedicated to
+> **eradicating** liquor."
+      </Markdown>
+      <Distractor value="making_rules"       > making rules for      </Distractor>
+      <Distractor value="advertising"        > helping to advertise  </Distractor>
+            <Key value="completely_removing" > completely removing   </Key>
+      <Distractor value="keeping_safe"       > keeping safe from     </Distractor>
+    </ChoiceInput>
+
+<Markdown when="@tmf_q_eradicating.value === 'making_rules'">
+*Not quite — regulating liquor is a milder goal than the one the sentence describes. These societies wanted it gone, not managed.*
+    </Markdown>
+<Markdown when="@tmf_q_eradicating.value === 'advertising'">
+*Not quite — the opposite of what a temperance society was dedicated to.*
+    </Markdown>
+<Markdown when="@tmf_q_eradicating.value === 'keeping_safe'">
+*Not quite — read it back in: "dedicated to keeping liquor safe" turns the sentence around. The societies were against it.*
+    </Markdown>
+<Markdown when="@tmf_q_eradicating.value === 'completely_removing'">
+*Yes — to eradicate is to root out entirely. That's why it goes with "full abstinence" rather than "moderation."*
+    </Markdown>
+  </Vertical>
+
+  <Vertical id="tmf_q_exacerbated_screen">
+    <ChoiceInput id="tmf_q_exacerbated">
+      <Markdown>
+What words could take the place of **exacerbated** — but keep the meaning the same?
+
+> "Such intrusions by the Protestant middle class **exacerbated** class, ethnic,
+> and religious tensions."
+      </Markdown>
+      <Distractor value="calmed_down"   > calmed down completely  </Distractor>
+            <Key value="made_worse"     > made much worse         </Key>
+      <Distractor value="fixed"         > fixed right up          </Distractor>
+      <Distractor value="started_over"  > started over            </Distractor>
+    </ChoiceInput>
+
+<Markdown when="@tmf_q_exacerbated.value === 'calmed_down'">
+*Not quite — backwards. Read it into the sentence: if the intrusions had calmed things, the paragraph wouldn't be about tensions at all.*
+    </Markdown>
+<Markdown when="@tmf_q_exacerbated.value === 'fixed'">
+*Not quite — also the wrong direction — nothing here gets repaired. The paragraph is describing friction, not its cure.*
+    </Markdown>
+<Markdown when="@tmf_q_exacerbated.value === 'started_over'">
+*Not quite — the class, ethnic, and religious tensions were already there. The intrusions changed their degree, not their starting point.*
+    </Markdown>
+<Markdown when="@tmf_q_exacerbated.value === 'made_worse'">
+*Right — to exacerbate is to make something bad that already exists worse.*
+    </Markdown>
+  </Vertical>
+
+  <Vertical id="tmf_q_per_capita_screen">
+    <ChoiceInput id="tmf_q_per_capita">
+      <Markdown>
+What words could take the place of **per capita consumption** — but keep the meaning the same?
+
+> "In the 1840s, Americans drank half of what they had in the 1820s, and
+> **per capita** consumption continued to decline over the next two decades."
+      </Markdown>
+      <Distractor value="per_saloon"       > the amount of drinking within each saloon        </Distractor>
+      <Distractor value="nationwide_total" > the amount of drinking across the whole country  </Distractor>
+      <Distractor value="per_ethnic_group" > the amount of drinking by each ethnic group      </Distractor>
+            <Key value="per_person"        > the average amount of drinking per person        </Key>
+    </ChoiceInput>
+
+<Markdown when="@tmf_q_per_capita.value === 'per_saloon'">
+*Not quite — "Capita" is Latin for heads — people, not places.*
+    </Markdown>
+<Markdown when="@tmf_q_per_capita.value === 'nationwide_total'">
+*Not quite — a national total would climb just because the population climbed. Per capita divides by the people, which is what makes the drop meaningful.*
+    </Markdown>
+<Markdown when="@tmf_q_per_capita.value === 'per_ethnic_group'">
+*Not quite — groups do show up elsewhere in this paragraph, but "per capita" counts by head — one person at a time.*
+    </Markdown>
+<Markdown when="@tmf_q_per_capita.value === 'per_person'">
+*Yes — the average per person. Take all the alcohol drunk in the country and divide it by everyone in it: the average American in the 1840s drank half of what the average American drank in the 1820s.*
+    </Markdown>
+  </Vertical>
+
+  <!-- ============================================================
+       CHAT-EMBEDDED — Benevolent Empire, disciplinary term (PDF p.22-24)
+       ============================================================ -->
+
+  <Vertical id="tmf_be_term_screen">
+    <ChoiceInput id="tmf_be_term">
+      <Markdown>
+**Benevolent Empire** is a discipline-specific term. Using clues in the passage,
+which word or phrase most directly helps us understand what it was?
+      </Markdown>
+      <Distractor value="traditional_religion" > traditional religion  </Distractor>
+            <Key value="powerful_network"      > powerful network      </Key>
+      <Distractor value="industrial_revolution"> Industrial Revolution </Distractor>
+      <Distractor value="spiritual_response"   > spiritual response    </Distractor>
+    </ChoiceInput>
+
+<Markdown when="@tmf_be_term.value === 'traditional_religion'">
+*Not quite — the passage says traditional Protestantism was "at low tide." The Benevolent Empire is the new thing, not the old one.*
+    </Markdown>
+<Markdown when="@tmf_be_term.value === 'industrial_revolution'">
+*Not quite — that's the cause of the social problems the reformers answered — not a name for the reformers' network.*
+    </Markdown>
+<Markdown when="@tmf_be_term.value === 'spiritual_response'">
+*Not quite — that phrase describes the Second Great Awakening. The Benevolent Empire is the organized thing the Awakening produced.*
+    </Markdown>
+<Markdown when="@tmf_be_term.value === 'powerful_network'">
+*Yes — the passage hands you the phrase: "a powerful network." Many societies, linked together, melding religion and reform.*
+    </Markdown>
+  </Vertical>
+
+  <Vertical id="tmf_be_connect_screen">
+    <CheckboxInput id="tmf_be_connect">
+      <Markdown>
+The Benevolent Empire was, indeed, a **powerful network.** What other words or
+phrases from the chapter describe or connect to it? **Select all that apply.**
+      </Markdown>
+            <Key value="societies_movements"     > societies / movements    </Key>
+            <Key value="middle_class"            > middle-class             </Key>
+      <Distractor value="american_independence"  > American independence    </Distractor>
+      <Distractor value="commercial_distilleries"> commercial distilleries  </Distractor>
+            <Key value="religion_and_reform"     > religion and reform      </Key>
+      <Distractor value="irish_catholics"        > Irish Catholics          </Distractor>
+    </CheckboxInput>
+
+<!-- Multi-select, so the feedback has to cover three cases: a wrong pick, a
+     right-but-incomplete set, and the whole set. The gate below (in the
+     chatpeg) asks for all three Keys and nothing else, which is only fair
+     because the "keep looking" line says so. -->
+<Markdown when="@tmf_be_connect.value.includes('american_independence')">
+*Not that one — American independence is the era the chapter opens in. The backdrop, not a piece of the network.*
+</Markdown>
+<Markdown when="@tmf_be_connect.value.includes('commercial_distilleries')">
+*Not that one — distilleries are what the reformers were up against. Look for the words that describe the reformers themselves.*
+</Markdown>
+<Markdown when="@tmf_be_connect.value.includes('irish_catholics')">
+*Not that one — Irish Catholic workers are the people the middle-class reformers intruded on: the other side of the tension, not part of the network.*
+</Markdown>
+<Markdown when="@tmf_be_connect.value.length &gt; 0 &amp;&amp; @tmf_be_connect.value.length &lt; 3">
+*Keep looking — more than one phrase here belongs to the network. Ask of each: who was in it, how were they organized, and what did it join together?*
+</Markdown>
+<Markdown when="@tmf_be_connect.value.length === 3 &amp;&amp; @tmf_be_connect.value.includes('societies_movements') &amp;&amp; @tmf_be_connect.value.includes('middle_class') &amp;&amp; @tmf_be_connect.value.includes('religion_and_reform')">
+*That's the set: middle-class people, organized into societies and movements, melding religion and reform.*
+</Markdown>
+  </Vertical>
+
+  <Vertical id="tmf_be_bestdef_screen">
+    <ChoiceInput id="tmf_be_bestdef">
+      <Markdown>
+Each member of your group wrote a one-sentence description of the Benevolent
+Empire. Read them and choose the **best** one.
+      </Markdown>
+      <Distractor value="danielle_evangelicals_name"    >**Danielle:** The name given to the Evangelicals in the temperance movement after the Second Great Awakening.</Distractor>
+            <Key value="joe_network_religion_reform"    >**Joe:** A strong network of religious societies that brought together religion and reform among middle-class Evangelicals.</Key>
+      <Distractor value="karis_reforms_promote_religion">**Karis:** The set of reforms designed to promote religious ideas that had decreased after the Industrial Revolution.</Distractor>
+    </ChoiceInput>
+
+<Markdown when="@tmf_be_bestdef.value === 'danielle_evangelicals_name'">
+*Not quite — Danielle names who was in it, but not what it **was** — and the Benevolent Empire was much wider than temperance alone.*
+    </Markdown>
+<Markdown when="@tmf_be_bestdef.value === 'karis_reforms_promote_religion'">
+*Not quite — Karis has the engine running backwards. Religious revival came first and powered the reform, rather than reform being invented to prop religion back up.*
+    </Markdown>
+<Markdown when="@tmf_be_bestdef.value === 'joe_network_religion_reform'">
+*Yes — Joe's has all three pieces: a network, made of societies, joining religion and reform among the middle class.*
+    </Markdown>
+  </Vertical>
+
+  <!-- CHAT-EMBEDDED — why did the intrusions exacerbate tensions? (PDF p.29) -->
+
+  <Vertical id="tmf_why_exacerbated_screen">
+    <ChoiceInput id="tmf_why_exacerbated">
+      <Markdown>
+So why did those intrusions — like the temperance campaigns — *exacerbate*
+class, ethnic, and religious tensions?
+      </Markdown>
+      <Distractor value="money_to_saloons"      >Because reformers gave money directly to saloon owners instead of working-class people.</Distractor>
+      <Distractor value="only_irish_affected"   >Because the campaigns ended up affecting only the Irish Catholics but not the working-class people.</Distractor>
+      <Distractor value="irish_led_movement"    >Because Irish Catholic immigrants led the temperance movement themselves.</Distractor>
+            <Key value="middle_class_intrusion" >Because middle-class Protestant reformers intruded on the customs of immigrant and working-class communities.</Key>
+    </ChoiceInput>
+
+<Markdown when="@tmf_why_exacerbated.value === 'money_to_saloons'">
+*Not quite — no money changes hands in this passage, and money isn't what the tension is about.*
+    </Markdown>
+<Markdown when="@tmf_why_exacerbated.value === 'only_irish_affected'">
+*Not quite — the sentence names Irish Catholics as many of the lower-class workers, not as the only people affected. The friction runs between classes.*
+    </Markdown>
+<Markdown when="@tmf_why_exacerbated.value === 'irish_led_movement'">
+*Not quite — turn it around: temperance was "championed by the middle class," and it threatened to intrude on lower-class workers, many of whom were Irish Catholics.*
+    </Markdown>
+<Markdown when="@tmf_why_exacerbated.value === 'middle_class_intrusion'">
+*Yes — one group reaching into another group's private life is exactly what makes class, ethnic, and religious tensions worse.*
+    </Markdown>
+  </Vertical>
+
+  <!-- ============================================================
+       CHAT-EMBEDDED — article vocabulary (PDF p.37-39)
+       ============================================================ -->
+
+  <Vertical id="tmf_q_teetotaling_screen">
+    <ChoiceInput id="tmf_q_teetotaling">
+      <Markdown>
+Dr. Booker asked us to think about **self-optimization**. It's in this sentence:
+
+> "She considers modern **teetotaling** to be steered by a great moral project
+> of our age: self-optimization."
+
+First — what does **teetotaling** mean?
+      </Markdown>
+      <Distractor value="heavy_drinking"     > drinking too much alcohol                        </Distractor>
+      <Distractor value="persuading_others"  > convincing other people to stop drinking alcohol </Distractor>
+      <Distractor value="drinking_tea"       > replacing alcohol with tea or coffee             </Distractor>
+            <Key value="no_alcohol_at_all"   > not drinking alcohol at all                      </Key>
+    </ChoiceInput>
+
+<Markdown when="@tmf_q_teetotaling.value === 'heavy_drinking'">
+*Not quite — the opposite. Teetotaling is on the abstaining side of the question.*
+    </Markdown>
+<Markdown when="@tmf_q_teetotaling.value === 'persuading_others'">
+*Not quite — that's what a movement does. Teetotaling is what one person does — about their own drinking.*
+    </Markdown>
+<Markdown when="@tmf_q_teetotaling.value === 'drinking_tea'">
+*Not quite — a reasonable guess from the spelling, but the "tee" is an emphatic T, for **total** — not tea.*
+    </Markdown>
+<Markdown when="@tmf_q_teetotaling.value === 'no_alcohol_at_all'">
+*Right — total abstinence, none at all. That's the "total" hiding inside teetotal.*
+    </Markdown>
+  </Vertical>
+
+  <Vertical id="tmf_selfoptim">
+    <ChoiceInput id="tmf_selfoptim_pick">
+      <Markdown>
+To pin down what **self-optimization** means, each of us found a sentence from
+the article that gives it context. Who picked the **best** one?
+      </Markdown>
+      <Distractor value="danielle_health_research" >**Danielle:** "(To be fair, this focus on health is partially a response to research on moderate alcohol consumption's detrimental effects on heart health, cancer risk, and lifespan.)"</Distractor>
+      <Distractor value="karis_freedom_to_choose"  >**Karis:** "Sober-curiosity, she said, was about a person's 'freedom to choose.'"</Distractor>
+            <Key value="joe_authenticity_selfcare" >**Joe:** "…choosing not to drink in an alcohol-soaked culture is seen as an act of authenticity or self-care…"</Key>
+    </ChoiceInput>
+
+<Markdown when="@tmf_selfoptim_pick.value === 'danielle_health_research'">
+*Not quite — Danielle's sentence says why health is on people's minds. Self-**optimization** needs a sentence about making yourself better, not about the research behind it.*
+    </Markdown>
+<Markdown when="@tmf_selfoptim_pick.value === 'karis_freedom_to_choose'">
+*Not quite — "Freedom to choose" is about having the choice, not about what the choice does for you. Look for the sentence that says what not drinking makes a person.*
+    </Markdown>
+<Markdown when="@tmf_selfoptim_pick.value === 'joe_authenticity_selfcare'">
+*Yes — "an act of authenticity or self-care" turns not drinking into working on yourself. That's the self-optimization the writer means.*
+    </Markdown>
+
+    <Markdown>**Explain why you chose that sentence.**</Markdown>
+    <TextArea id="tmf_selfoptim_explain" rows="3" placeholder="I chose that sentence because…" />
+  </Vertical>
+
+  <!-- CHAT-EMBEDDED — summarize the first paragraph (PDF p.41) -->
+
+  <Vertical id="tmf_summary_pick_screen">
+    <ChoiceInput id="tmf_summary_pick">
+      <Markdown>
+Which is the **best summary** of the article's first paragraph (about Carrie
+Nation)?
+      </Markdown>
+            <Key value="what_and_why"        >In the early 1900s, Carrie Nation used bricks, stones, and a hatchet to destroy liquor bottles because she believed liquor caused "society's moral failings."</Key>
+      <Distractor value="hatchet_detail_only">Carrie Nation gained fame in 1900 for using a hatchet to break up liquor bottles in several saloons in the midwest.</Distractor>
+      <Distractor value="vague_smashers"     >Starting in 1900, Carrie Nation invaded saloons and destroyed everything with "smashers."</Distractor>
+      <Distractor value="opinion_interesting">Carrie Nation is one of the most interesting figures of the early 1900s, mostly because she focused on getting physically (and violently) involved in the temperance movement.</Distractor>
+    </ChoiceInput>
+
+<Markdown when="@tmf_summary_pick.value === 'hatchet_detail_only'">
+*Not quite — true, but only half the paragraph. A summary has to carry **why** she did it, not just what she swung.*
+    </Markdown>
+<Markdown when="@tmf_summary_pick.value === 'vague_smashers'">
+*Not quite — "Destroyed everything" overstates it, and the "smashers" were the women who joined her. A summary shouldn't blur the facts it reports.*
+    </Markdown>
+<Markdown when="@tmf_summary_pick.value === 'opinion_interesting'">
+*Not quite — that's an opinion about Carrie Nation, not a summary of the paragraph. Summaries report; they don't rate.*
+    </Markdown>
+<Markdown when="@tmf_summary_pick.value === 'what_and_why'">
+*Yes — what she did, how she did it, and the reason the paragraph gives: she blamed liquor for "society's moral failings."*
+    </Markdown>
+  </Vertical>
+
+  <!-- CHAT-EMBEDDED — article: "authenticity" vocab + overall thesis -->
+
+  <Vertical id="tmf_q_authenticity_screen">
+    <ChoiceInput id="tmf_q_authenticity">
+      <Markdown>
+The article says choosing not to drink is seen as "an act of **authenticity**
+or self-care." What does **authenticity** mean here?
+      </Markdown>
+            <Key value="true_to_self"          > Being true to who you really are.            </Key>
+      <Distractor value="following_rules"      > Following a strict set of official rules.    </Distractor>
+      <Distractor value="group_approval"       > Getting approval from a group before you act.</Distractor>
+      <Distractor value="doing_whats_popular"  > Doing whatever happens to be popular.        </Distractor>
+    </ChoiceInput>
+
+<Markdown when="@tmf_q_authenticity.value === 'following_rules'">
+*Not quite — rules arrive from outside you. The article pairs authenticity with self-care — something that comes from inside.*
+    </Markdown>
+<Markdown when="@tmf_q_authenticity.value === 'group_approval'">
+*Not quite — nearly the opposite: the article's example is not drinking in "an alcohol-soaked culture" — without the group's blessing.*
+    </Markdown>
+<Markdown when="@tmf_q_authenticity.value === 'doing_whats_popular'">
+*Not quite — popularity is everyone else's taste. Authenticity is your own.*
+    </Markdown>
+<Markdown when="@tmf_q_authenticity.value === 'true_to_self'">
+*Right — being genuinely yourself. That's how turning down a drink becomes a statement about who you are.*
+    </Markdown>
+  </Vertical>
+
+  <Vertical id="tmf_article_thesis_screen">
+    <ChoiceInput id="tmf_article_thesis">
+      <Markdown>
+Step back from the details — what is the article's **main point** overall?
+      </Markdown>
+      <Distractor value="nation_most_important"       >Carrie Nation was the single most important figure in the temperance movement, surpassing even Lyman Beecher.</Distractor>
+            <Key value="new_temperance_new_morality"  >Today's "sober-curious" movement is a kind of new temperance, but its morality has shifted from protecting society to improving a person's own health.</Key>
+      <Distractor value="more_dangerous_today"        >Drinking alcohol is far more dangerous today than it was in the 1800s because today's alcohol causes heart disease and cancer.</Distractor>
+      <Distractor value="surgeon_general_prohibition" >The Surgeon General's goal in suggesting a warning label on alcohol is to bring back Prohibition.</Distractor>
+    </ChoiceInput>
+
+<Markdown when="@tmf_article_thesis.value === 'nation_most_important'">
+*Not quite — she's the article's opening image, not its point. Ask what the writer is **using** her for.*
+    </Markdown>
+<Markdown when="@tmf_article_thesis.value === 'more_dangerous_today'">
+*Not quite — the article does report research on alcohol's harms, but it never claims today's alcohol is worse. That's a supporting detail.*
+    </Markdown>
+<Markdown when="@tmf_article_thesis.value === 'surgeon_general_prohibition'">
+*Not quite — another detail, and an overstatement — a warning label is not a ban.*
+    </Markdown>
+<Markdown when="@tmf_article_thesis.value === 'new_temperance_new_morality'">
+*Yes — same behavior, different reason. The 1800s movement set out to protect society; today's sets out to improve the self.*
+    </Markdown>
+  </Vertical>
+
+  <!-- CHAT-EMBEDDED — lithograph comprehension (Part 4) -->
+
+  <Vertical id="tmf_litho_observe_screen">
+    <ChoiceInput id="tmf_litho_observe">
+      <Markdown>
+What does the image show across its nine numbered steps?
+      </Markdown>
+      <Distractor value="top_is_moderate"     >That the best stage of becoming a drinker, at the top, is moderate drinking.</Distractor>
+      <Distractor value="nine_different_men"  >Nine different men, each working in a different profession that was common in the 1800s.</Distractor>
+      <Distractor value="good_and_bad_sides"  >The good and bad sides of drinking alcohol for working class people.</Distractor>
+            <Key value="one_mans_decline"     >One man's life of drinking, from a first drink, to the summit, to falling into poverty, crime, and death.</Key>
+    </ChoiceInput>
+
+<Markdown when="@tmf_litho_observe.value === 'top_is_moderate'">
+*Not quite — read step 5's caption again: "the summit attained" is "a confirmed drunkard" — and it's where the fall starts.*
+    </Markdown>
+<Markdown when="@tmf_litho_observe.value === 'nine_different_men'">
+*Not quite — it's one man, nine times — the same life at nine moments. That's why it's called a "progress."*
+    </Markdown>
+<Markdown when="@tmf_litho_observe.value === 'good_and_bad_sides'">
+*Not quite — the image is one-sided on purpose. It only rises in order to fall; nothing on the arch is offered as a good ending.*
+    </Markdown>
+<Markdown when="@tmf_litho_observe.value === 'one_mans_decline'">
+*Yes — one life, climbing to the summit and then dropping step by step to the grave.*
+    </Markdown>
+  </Vertical>
+
+  <Vertical id="tmf_litho_purpose_screen">
+    <ChoiceInput id="tmf_litho_purpose">
+      <Markdown>
+Why would the temperance movement create and share an image like this?
+      </Markdown>
+      <Distractor value="advertise_saloons"  >To advertise the saloons pictured in it and encourage people to get together with their friends.</Distractor>
+      <Distractor value="record_social_life" >To record the kinds of social activities that a typical wealthy family participated in in 1846.</Distractor>
+            <Key value="warn_and_persuade"   >To warn people that even a first drink can lead step by step to ruin — to persuade them to stop drinking.</Key>
+      <Distractor value="no_consequences"    >To show that drinking has no lasting consequences as long as you drink moderately.</Distractor>
+    </ChoiceInput>
+
+<Markdown when="@tmf_litho_purpose.value === 'advertise_saloons'">
+*Not quite — an advertisement wouldn't run all the way to step 9. Everything past the summit is a warning.*
+    </Markdown>
+<Markdown when="@tmf_litho_purpose.value === 'record_social_life'">
+*Not quite — it isn't a record of anything that happened. The ruined home beneath the arch is there to make you feel something.*
+    </Markdown>
+<Markdown when="@tmf_litho_purpose.value === 'no_consequences'">
+*Not quite — the whole arch is consequences: poverty, disease, crime, death.*
+    </Markdown>
+<Markdown when="@tmf_litho_purpose.value === 'warn_and_persuade'">
+*Yes — this is persuasion. Take one friendly glass, the picture argues, and the other eight steps follow.*
+    </Markdown>
+  </Vertical>
+
+  <!-- CHAT-EMBEDDED — synthesis: evaluate peer comparisons (Part 4) -->
+
+  <Vertical id="tmf_synth_peereval_screen">
+    <ChoiceInput id="tmf_synth_peereval">
+      <Markdown>
+Your group each summed up the biggest difference between the two movements.
+Which comparison is **best**?
+      </Markdown>
+      <Distractor value="joe_not_different"      >**Joe:** They're actually NOT that different — both are about not drinking at all or drinking only moderately to protect society and families.</Distractor>
+            <Key value="danielle_moral_vs_health">**Danielle:** Both discourage drinking, but the 1800s movement was a moral and social crusade, while today's movement is about personal health and self-improvement.</Key>
+      <Distractor value="karis_price_of_alcohol" >**Karis:** The main difference is that people in the 1800s drank more expensive alcohol than people do today, which caused harm to a lot of families.</Distractor>
+    </ChoiceInput>
+
+<Markdown when="@tmf_synth_peereval.value === 'joe_not_different'">
+*Not quite — Joe has the likeness right — but a comparison owes us the difference too, and these two movements give very different reasons for the same behavior.*
+    </Markdown>
+<Markdown when="@tmf_synth_peereval.value === 'karis_price_of_alcohol'">
+*Not quite — price isn't a contrast either text draws — the textbook says whiskey was cheap. Compare what each movement was trying to protect.*
+    </Markdown>
+<Markdown when="@tmf_synth_peereval.value === 'danielle_moral_vs_health'">
+*Yes — both discourage drinking; what changed is the reason. Society and family then, the self now. That's the comparison your final paragraph needs.*
+    </Markdown>
+  </Vertical>
+
+</Vertical>
