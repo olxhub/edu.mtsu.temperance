@@ -96,11 +96,17 @@ lang: en-Latn-US
          Mounted out here it stays alive for the whole session, so mode="each"
          means each visit. -->
 
-    <Trigger id="tmf_intro_cue"      watch="@tmf_main.value === 'tmf_intro'"      mode="each">
+    <!-- HACK: the DefinitionKey(...) normalization in these watch expressions is
+         NOT long-term stable and should NOT be copied into other courses. It papers
+         over the arrow-era assumption that pane values are bare screen names; target
+         embeds write qualified refs. The intended fix is cues riding the embed itself
+         (flash=/focus= on the ::screen [display=target:...] line) so no pane-value
+         comparison exists at all — see bugs.md. We ship this and clean up later. -->
+    <Trigger id="tmf_intro_cue"      watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_intro')"      mode="each">
       <Flash id="tmf_intro_flash"      target="tmf_intro" />
     </Trigger>
 
-    <Trigger id="tmf_vks_cue"        watch="@tmf_main.value === 'tmf_vks'"        mode="each">
+    <Trigger id="tmf_vks_cue"        watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_vks')"        mode="each">
       <Flash id="tmf_vks_flash"        target="tmf_vks_grid" />
       <FocusAction id="tmf_vks_focus"  target="tmf_vks_grid" />
     </Trigger>
@@ -111,75 +117,75 @@ lang: en-Latn-US
     <!-- Prof. Hale's lecture has no cue: it is an optional reference on its own
          tab now, never parked in the pane, so there is nothing to point at. -->
 
-    <Trigger id="tmf_tb_a_cue"       watch="@tmf_main.value === 'tmf_tb_a'"       mode="each">
+    <Trigger id="tmf_tb_a_cue"       watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_tb_a')"       mode="each">
       <Flash id="tmf_tb_a_flash"       target="tmf_tb_a_annotate" />
     </Trigger>
 
-    <Trigger id="tmf_tb_a2_cue"      watch="@tmf_main.value === 'tmf_tb_a2'"      mode="each">
+    <Trigger id="tmf_tb_a2_cue"      watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_tb_a2')"      mode="each">
       <Flash id="tmf_tb_a2_flash"      target="tmf_tb_a2_annotate" />
     </Trigger>
 
-    <Trigger id="tmf_tb_b_cue"       watch="@tmf_main.value === 'tmf_tb_b'"       mode="each">
+    <Trigger id="tmf_tb_b_cue"       watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_tb_b')"       mode="each">
       <Flash id="tmf_tb_b_flash"       target="tmf_tb_b_annotate" />
     </Trigger>
 
-    <Trigger id="tmf_tb_c_cue"       watch="@tmf_main.value === 'tmf_tb_c'"       mode="each">
+    <Trigger id="tmf_tb_c_cue"       watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_tb_c')"       mode="each">
       <Flash id="tmf_tb_c_flash"       target="tmf_tb_c_annotate" />
     </Trigger>
 
     <!-- The article is read on PAPER, so the only thing on screen to point at is
          the instruction block. The caret is deliberately NOT parked on its Done:
          that is the thing you press after reading, not before. -->
-    <Trigger id="tmf_article_cue"    watch="@tmf_main.value === 'tmf_article_read'" mode="each">
+    <Trigger id="tmf_article_cue"    watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_article_read')" mode="each">
       <Flash id="tmf_article_flash"    target="tmf_article_read" />
     </Trigger>
 
-    <Trigger id="tmf_litho_cue"      watch="@tmf_main.value === 'tmf_litho_read'" mode="each">
+    <Trigger id="tmf_litho_cue"      watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_litho_read')" mode="each">
       <Flash id="tmf_litho_flash"      target="tmf_litho_img" />
     </Trigger>
 
     <!-- The tasks. -->
 
-    <Trigger id="tmf_notecheck_cue"  watch="@tmf_main.value === 'tmf_notecheck'"  mode="each">
+    <Trigger id="tmf_notecheck_cue"  watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_notecheck')"  mode="each">
       <Flash id="tmf_notecheck_flash"  target="tmf_notecheck_grid" />
       <FocusAction id="tmf_notecheck_focus" target="tmf_notecheck_grid" />
     </Trigger>
 
-    <Trigger id="tmf_grammar_svo_cue" watch="@tmf_main.value === 'tmf_grammar_svo'" mode="each">
+    <Trigger id="tmf_grammar_svo_cue" watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_grammar_svo')" mode="each">
       <Flash id="tmf_grammar_svo_flash" target="tmf_grammar_svo_verb" />
     </Trigger>
 
     <!-- The two SimpleTextSelection tasks are worked by dragging over the text,
          so there is no single control to park a caret on — pulse only. -->
-    <Trigger id="tmf_grammar_np_cue" watch="@tmf_main.value === 'tmf_grammar_np'" mode="each">
+    <Trigger id="tmf_grammar_np_cue" watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_grammar_np')" mode="each">
       <Flash id="tmf_grammar_np_flash" target="tmf_grammar_np_head" />
     </Trigger>
 
-    <Trigger id="tmf_grammar_structure_cue" watch="@tmf_main.value === 'tmf_grammar_structure'" mode="each">
+    <Trigger id="tmf_grammar_structure_cue" watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_grammar_structure')" mode="each">
       <Flash id="tmf_grammar_structure_flash" target="tmf_grammar_structure" />
     </Trigger>
 
-    <Trigger id="tmf_grammar_antecedent_cue" watch="@tmf_main.value === 'tmf_grammar_antecedent'" mode="each">
+    <Trigger id="tmf_grammar_antecedent_cue" watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_grammar_antecedent')" mode="each">
       <Flash id="tmf_grammar_antecedent_flash" target="tmf_grammar_antecedent" />
     </Trigger>
 
     <!-- The comprehension questions are chat-embedded now; the pane holds the
          full excerpt to read from, so this is a reading cue — pulse, no caret. -->
-    <Trigger id="tmf_comp_reading_cue" watch="@tmf_main.value === 'tmf_comp_reading'" mode="each">
+    <Trigger id="tmf_comp_reading_cue" watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_comp_reading')" mode="each">
       <Flash id="tmf_comp_reading_flash" target="tmf_comp_reading" />
     </Trigger>
 
-    <Trigger id="tmf_synth_sort_cue" watch="@tmf_main.value === 'tmf_synth_sort'" mode="each">
+    <Trigger id="tmf_synth_sort_cue" watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_synth_sort')" mode="each">
       <Flash id="tmf_synth_sort_flash" target="tmf_synth_sort_grid" />
       <FocusAction id="tmf_synth_sort_focus" target="tmf_synth_sort_grid" />
     </Trigger>
 
-    <Trigger id="tmf_final_write_cue" watch="@tmf_main.value === 'tmf_final_write_screen'" mode="each">
+    <Trigger id="tmf_final_write_cue" watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_final_write_screen')" mode="each">
       <Flash id="tmf_final_write_flash" target="tmf_final_write" />
       <FocusAction id="tmf_final_write_focus" target="tmf_final_write" />
     </Trigger>
 
-    <Trigger id="tmf_conclusion_cue" watch="@tmf_main.value === 'tmf_conclusion'" mode="each">
+    <Trigger id="tmf_conclusion_cue" watch="DefinitionKey(@tmf_main.value) === DefinitionKey('tmf_conclusion')" mode="each">
       <Flash id="tmf_conclusion_flash" target="tmf_conclusion_md" />
     </Trigger>
 
