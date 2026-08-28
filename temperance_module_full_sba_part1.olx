@@ -1,6 +1,6 @@
 <!--
 ---
-description: "READ 1000 — Temperance (FULL SBA): the complete Temperance module, extending the storyboard's authored portion through the parts it left 'in progress'. Across five parts, a study group (peers Danielle, Joe, Karis; reading instructor Professor Booker) works through three texts — an American Yawp textbook excerpt, N. Currier's 1846 lithograph 'The Drunkard's Progress', and a magazine article the instructor hands out on paper — building toward PULLING IT TOGETHER, a four-or-five-sentence synthesis of all three texts, by rating vocabulary, close-reading and highlighting, checking a peer's notes, answering comprehension questions, and analyzing the image, then finally writing four or five sentences comparing the historic temperance movement (the 1800s) with today's approaches to drinking less. Tabbed design: a Main Content tab holding the scripted conversation beside the activity pane, then one tab per reading (Professor Hale's lecture, the four American Yawp parts, the lithograph), and the Pulling It Together tab. Companion to the storyboard-faithful build (sba/temperance_module_sba)."
+description: "READ 1000 — Temperance (FULL SBA): the complete Temperance module, extending the storyboard's authored portion through the parts it left 'in progress'. Across five parts, a study group (peers Danielle, Joe, Karis; reading instructor Professor Booker) works through three texts — an American Yawp textbook excerpt, N. Currier's 1846 lithograph 'The Drunkard's Progress', and a magazine article the instructor hands out on paper — building toward PULLING IT TOGETHER, a four-or-five-sentence synthesis of all three texts, by rating vocabulary, close-reading and highlighting, checking a peer's notes, answering comprehension questions, and analyzing the image, then finally writing four or five sentences comparing the historic temperance movement (the 1800s) with today's approaches to drinking less. Tabbed design: a Main Content tab holding the scripted conversation beside the activity pane — the conversation opens each activity into the pane with a target embed, which also leaves a labelled, clickable marker in the transcript at the point the activity happened — then one tab per reading (Professor Hale's lecture, the four American Yawp parts, the lithograph), and the Pulling It Together tab. Companion to the storyboard-faithful build (sba/temperance_module_sba)."
 category: writing
 index: 56
 lang: en-Latn-US
@@ -32,7 +32,7 @@ lang: en-Latn-US
 
     Main Content            the session itself — the scripted conversation on the
                             left, the activity pane (a UseHistory the conversation
-                            drives via `tmf_main <- <id>` set commands) on the right
+                            drives) on the right
     Prof. Hale's Lecture    \
     Textbook 1..4           |  the readings, each on its own tab, so a student can
     The Drunkard's Progress /  reopen any one of them at any point
@@ -50,6 +50,27 @@ lang: en-Latn-US
 
   No print="no-chrome" on <Tabs>: this module has no print/submit page yet, so
   there is no export for the tab strip to intrude on.
+
+  How the pane is driven. The conversation opens each activity screen with a
+  TARGET EMBED in the chatpeg —
+
+      ::tmf_vks [display=target:tmf_main label="How familiar are these words?"]
+
+  — rather than a bare `tmf_main <- tmf_vks` set command. The screen still lands
+  HERE, in the tmf_main pane; what the embed adds is a small labelled button left
+  behind in the transcript at the point in the discussion where that activity
+  happened. It is a visible marker of where you were, and clicking it repoints
+  the pane at that screen again, so going back to an earlier activity is one
+  click instead of a scroll-and-guess. The repoint fires once per screen
+  (CompactPopout persists a `repointed` flag), so reloading mid-session does not
+  drag the pane back to the top of the module.
+
+  The Flash/FocusAction cues below still work unchanged: a target embed writes
+  @tmf_main.value exactly as the set command did, so the watch expressions fire
+  the same way.
+
+  Only `tmf_main <- tmf_blank` is still a set command — parking the pane empty is
+  not an activity, so there is nothing to mark or to return to.
 -->
 
 <Tabs id="temperance_module_full_sba" title="Temperance — Full SBA (READ 1000)" launchable="true">
@@ -62,7 +83,7 @@ lang: en-Latn-US
          as it lands, and the screens with something to fill in also get the
          caret (FocusAction) — which scrolls the control into view for free.
          Reading screens get the pulse alone; the chat points at them in dialogue
-         instead (the arrow lead-ins in the chatpeg).
+         instead (the lead-in lines beside each target embed in the chatpeg).
 
          Flash aims at the TASK — the Annotate, the grid, the textarea — not at
          the screen's heading. Reading screens have no separate task control, so

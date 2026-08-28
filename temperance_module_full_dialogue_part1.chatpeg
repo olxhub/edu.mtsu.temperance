@@ -9,6 +9,40 @@ Part 1: Introduction — Meet Your Peers [id=part1]
 // The Introduction (tmf_intro) is already showing in the Main Content tab
 // (the UseHistory `initial`). Dialogue is kept lean.
 
+// HOW THE ACTIVITY PANE IS DRIVEN.
+//
+// Every screen the conversation opens in the pane is written as a TARGET EMBED:
+//
+//     ::tmf_vks [display=target:tmf_main label="How familiar are these words?"]
+//
+// which does two things at once. It repoints the tmf_main UseHistory at that
+// screen (once, the first time the line is revealed — CompactPopout persists a
+// `repointed` flag, so a reload doesn't yank the pane backwards), and it leaves
+// a small labelled button sitting in the transcript at exactly the point in the
+// conversation where the activity happened. Clicking that button repoints the
+// pane there again.
+//
+// That transcript marker is the reason for the form. A bare `tmf_main <- x` set
+// command is invisible: the pane changes and the record of WHY is only in the
+// surrounding dialogue. With a marker, a student scrolling back through a long
+// session can see where each activity sat in the discussion and reopen it,
+// without hunting for the moment it was mentioned. The activities themselves
+// still live in the pane — this is not an inline embed, and the chat column
+// stays a conversation.
+//
+// Inline `::screen` embeds (no [display=...]) are a different thing and are
+// still used deliberately below: the short question widgets that belong IN the
+// talk — the vocabulary MCQs, the five comprehension questions — render in the
+// chat so that the pane is free to hold the text they are about.
+//
+// The one arrow left is `tmf_main <- tmf_blank`: parking the pane on a blank
+// screen isn't an activity, so there is nothing worth marking or going back to.
+//
+// Timing note: a set command executes while the reveal walks past it, without
+// stopping; an embed is content, so it is revealed as its own beat. In practice
+// the pane therefore changes one Continue BEFORE the line that announces it,
+// never after — which is the order you want anyway.
+
 Joe: Hey, Karis. Hey, Danielle.
 
 Karis: Hey. Before class starts, can I run something by you? It's about temperance — our topic today. [face=explaining]
@@ -32,20 +66,23 @@ Danielle: Good to know. OK — here's Professor Booker.
 Part 2: Explore the Topic Background [id=part2]
 -----------------------------------------------
 
-tmf_main <- tmf_vks
+::tmf_vks [display=target:tmf_main label="How familiar are these words?"]
 
 Professor Booker: Before we read, take a look at some words you'll meet in the texts. I'm not grading this — I just want to know how familiar each one is. Fill out the table on the right. [face=calm]
 
 --- wait Object.keys(@tmf_vks_grid.value).length >= 8 ---
 
 // The lecture is no longer parked in the pane or gated — it is an optional
-// reference on its own tab. The pane stays on tmf_vks until the textbook lands.
+// reference on its own tab. The grid stays up while the group is still talking
+// about the words on it; the pane goes quiet when the topic leaves it.
 
 Joe: I knew about half of those. Should I look the rest up before we read?
 
 Professor Booker: We'll get to vocabulary exercises later — the words come back around in context as we read.
 
 Danielle: Professor Hale's note is under its tab if you want the background — we'll hit the essentials as we go.
+
+tmf_main <- tmf_blank
 
 Professor Booker: One tool before we start, because you'll use it on every reading here. Select any stretch of text with your mouse and an **Annotate** button pops up.
 
@@ -59,7 +96,7 @@ Part 3: Main Readings [id=part3]
 // The textbook is read one paragraph at a time; each part appears only after
 // the peers have talked through the one before it (chunking + mediating dialog).
 
-tmf_main <- tmf_tb_a
+::tmf_tb_a [display=target:tmf_main label="The excerpt — part 1"]
 
 Professor Booker: Now the reading that matters most for the comparison we're building: the textbook chapter. Read the first part and highlight as you go. It's on the right --->
 
@@ -101,7 +138,7 @@ Danielle: One more from this part — "proliferated."
 
 --- wait @tmf_q_proliferated.value === 'increased_rapidly' ---
 
-tmf_main <- tmf_tb_a2
+::tmf_tb_a2 [display=target:tmf_main label="The excerpt — part 2"]
 
 Professor Booker: Here's the next part of the chapter, on the right --->
 
@@ -137,7 +174,7 @@ Professor Booker: Now put it together. Each of you wrote a one-sentence definiti
 
 --- wait @tmf_be_bestdef.value === 'joe_network_religion_reform' ---
 
-tmf_main <- tmf_tb_b
+::tmf_tb_b [display=target:tmf_main label="The excerpt — part 3"]
 
 Professor Booker: On to the next part of the excerpt, over on the right --->
 
@@ -155,11 +192,11 @@ Danielle: There's a word here — "galvanized." I looked it up, and there are a 
 
 --- wait @tmf_q_galvanized.value === 'spurred_into_action' ---
 
-tmf_main <- tmf_notecheck
-
 Karis: I picked "to spur into action."
 
 Danielle: Me too. The support got energized — people actually started doing something. Nobody was coating anything in metal.
+
+::tmf_notecheck [display=target:tmf_main label="Checking Joe's notes"]
 
 Joe: I also jotted some notes on the chapter so far. Can you check them? And even if something's right, is it important enough to use when we pull the texts together at the end?
 
@@ -167,13 +204,13 @@ Joe: Here's my list. Sort each statement on the right, then press Check.
 
 --- wait @tmf_notecheck_problem.submitCount > 0 ---
 
-tmf_main <- tmf_tb_c
-
 Karis: One of those is off, Joe. The textbook said the Industrial Revolution LED TO the social problems. It wasn't a response to them.
 
 Joe: Ah — good catch. Thanks.
 
 Danielle: Lyman Beecher's role in the movement and when those reform societies were growing are good pieces of information, but they're details. The network, the Awakening, and the women's role are the ideas that belong in our final summary.
+
+::tmf_tb_c [display=target:tmf_main label="The excerpt — part 4"]
 
 Professor Booker: Here's the last part of the excerpt. These next few words are a kind of paraphrasing — find words that could take the term's place without changing the meaning.
 
@@ -199,7 +236,7 @@ Professor Booker: One more — "per capita."
 
 --- wait @tmf_q_per_capita.value === 'per_person' ---
 
-tmf_main <- tmf_grammar_svo
+::tmf_grammar_svo [display=target:tmf_main label="Verb, subject, object"]
 
 Joe: Can we look again at the sentence I highlighted — "Such intrusions by the Protestant middle class exacerbated class, ethnic, and religious tensions"?
 
@@ -207,19 +244,21 @@ Professor Booker: A good sentence to analyze. On the right, highlight the verb f
 
 --- wait @tmf_grammar_svo_verb_problem.submitCount > 0 && @tmf_grammar_svo_subject_problem.submitCount > 0 && @tmf_grammar_svo_object_problem.submitCount > 0 ---
 
-tmf_main <- tmf_grammar_np
+::tmf_grammar_np [display=target:tmf_main label="Inside the noun phrase"]
 
 Professor Booker: Notice the subject is a noun phrase. On the right it's on its own, without the rest of the sentence — take it apart. The head noun first, then the determiner, then the postmodifier.
 
 --- wait @tmf_grammar_np_head_problem.submitCount > 0 && @tmf_grammar_np_det_problem.submitCount > 0 && @tmf_grammar_np_post_problem.submitCount > 0 ---
 
-tmf_main <- tmf_grammar_structure
+::tmf_grammar_structure [display=target:tmf_main label="The grammatical structure"]
 
-tmf_main <- tmf_grammar_antecedent
+Professor Booker: Here's the whole structure laid out on the right. Take it in, then click **I understand** at the bottom.
 
-Professor Booker: Here's the whole structure laid out on the right.
+--- wait @tmf_grammar_structure_done.value ---
 
 Danielle: Wait — what intrusions is it even talking about?
+
+::tmf_grammar_antecedent [display=target:tmf_main label="Find the antecedent"]
 
 Professor Booker: Good question. We need the antecedent. On the right, find the earlier sentence that describes the intrusions and highlight the whole thing, start to finish.
 
@@ -236,7 +275,7 @@ Professor Booker: So, using that, why did those intrusions "exacerbate" tensions
 // four Yawp parts end to end). Answering with the passage closed was a memory
 // test; answering with it open on the right is reading.
 
-tmf_main <- tmf_comp_reading
+::tmf_comp_reading [display=target:tmf_main label="The excerpt — all four parts"]
 
 Professor Booker: Let's check your understanding of the excerpt. The whole thing is on the right now, all four parts end to end, with your highlights on it — scroll it while you answer. [face=calm]
 
@@ -272,7 +311,7 @@ Professor Booker: Last one. Scroll to the end of part 4 and find the evidence th
 
 Danielle: Half of what they drank twenty years earlier. That's the number I'd put in the comparison at the end.
 
-tmf_main <- tmf_litho_read
+::tmf_litho_read [display=target:tmf_main label="A temperance-era image"]
 
 Professor Booker: Nice work on the chapter. Before we bring in a modern article, let's look at an image from the temperance era itself — it connects directly to what we just read. It's on the right --->
 
@@ -290,7 +329,7 @@ Joe: Grim. Why would the temperance folks make something like this?
 
 --- wait @tmf_litho_purpose.value === 'warn_and_persuade' ---
 
-tmf_main <- tmf_article_read
+::tmf_article_read [display=target:tmf_main label="The magazine article"]
 
 Professor Booker: Images like this were made to persuade. Now for the third text — a recent magazine article that connects the temperance era to today. I handed out a paper copy; take it out and read it, marking it up as you go. The instructions are on the right --->
 
@@ -337,7 +376,7 @@ Danielle: So underneath, the old movement and today's movement are actually pret
 Part 4: Building Understanding and Synthesizing [id=part4]
 ----------------------------------------------------------
 
-tmf_main <- tmf_synth_sort
+::tmf_synth_sort [display=target:tmf_main label="Then and now"]
 
 Professor Booker: Let's pull all three texts together. On the right, sort each description under the movement it fits, then press Check.
 
@@ -352,7 +391,7 @@ Danielle: Each of us also tried to sum up the big difference in one sentence. Wh
 Part 5: Conclusion [id=part5]
 -----------------------------
 
-tmf_main <- tmf_final_write_screen
+::tmf_final_write_screen [display=target:tmf_main label="Pulling it together"]
 
 Professor Booker: You're ready for the goal we set at the start — pulling it all together. On the right, write four or five sentences comparing the historic temperance movement with today's approaches to drinking less. Draw on the textbook, the printed article, and the lithograph.
 
@@ -361,7 +400,7 @@ Professor Booker: You're ready for the goal we set at the start — pulling it a
 
 --- wait wordcount(@tmf_final_write.value) >= 1 ---
 
-tmf_main <- tmf_conclusion
+::tmf_conclusion [display=target:tmf_main label="You're done"]
 
 Professor Booker: That's the comparison we've been building toward all along. [face=calm]
 

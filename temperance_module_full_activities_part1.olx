@@ -127,6 +127,12 @@ rows:
        No <Done> — nothing waits on it.
        ============================================================ -->
 
+  <!-- Parked wherever the chat has moved past the pane's last activity —
+       an intentionally quiet screen, same pattern as the writing journals. -->
+  <Markdown id="tmf_blank">
+*(nothing here right now — the discussion continues on the left)*
+  </Markdown>
+
   <Vertical id="tmf_lecture_read">
     <Annotate id="tmf_lecture_annotate" title="Professor Hale's Lecture">
       <Markdown id="tmf_lecture_md" src="readings/lecture_hale.md" />
@@ -250,7 +256,7 @@ Highlight the verb.
 ---
 Such intrusions by the Protestant middle class [exacerbated] class, ethnic, and religious tensions.
 ---
-all: Right — "exacerbated" is the verb: it's what the intrusions *did*.
+all: Right — "exacerbated" is the verb: it's what the intrusions did.
 : The verb is the action word — what happened in this sentence?
     </SimpleTextSelection>
 
@@ -292,7 +298,7 @@ own — take it apart in three steps.
     </Markdown>
 
     <SimpleTextSelection id="tmf_grammar_np_head" mode="graded" title="Highlight the head noun">
-Highlight the head noun — the **one word** the whole phrase is built around.
+Highlight the head noun — the one word the whole phrase is built around.
 ---
 Such [intrusions] by the Protestant middle class
 ---
@@ -301,7 +307,7 @@ all: Right — "intrusions" is the head noun. Everything else in the phrase is t
     </SimpleTextSelection>
 
     <SimpleTextSelection id="tmf_grammar_np_det" mode="graded" title="Highlight the determiner">
-Highlight the determiner — the word in front of the head noun that points at *which* ones.
+Highlight the determiner — the word in front of the head noun that points at which ones.
 ---
 [Such] intrusions by the Protestant middle class
 ---
@@ -333,11 +339,12 @@ Here is the sentence laid out:
 Both the subject and the object are **noun phrases** — to understand the
 sentence, you hold each whole phrase together.
     </Markdown>
+    <Done id="tmf_grammar_structure_done" label="I understand" />
   </Vertical>
 
   <!-- p.28 — highlight the antecedent of "Such intrusions" -->
   <SimpleTextSelection id="tmf_grammar_antecedent" mode="graded" title="Find the Antecedent">
-"Such intrusions" points back to an earlier sentence. Find the sentence that describes those intrusions — its antecedent — and highlight **the entire sentence**, from its first word through its final period.
+"Such intrusions" points back to an earlier sentence. Find the sentence that describes those intrusions — its antecedent — and highlight the entire sentence, from its first word through its final period.
 ---
 In response to the perception that heavy drinking was associated with men who abused, abandoned, or neglected their family obligations, women formed a significant presence in societies dedicated to eradicating liquor. Temperance became a hallmark of middle-class respectability among both men and women and developed into a crusade with a visible class character. [Temperance, like many other reform efforts, was championed by the middle class and threatened to intrude on the private lives of lower-class workers, many of whom were Irish Catholics.] Such intrusions by the Protestant middle class exacerbated class, ethnic, and religious tensions. Still, while the temperance movement made less substantial inroads into lower-class workers' drinking culture, the movement was still a great success for reformers.
 ---
@@ -566,19 +573,20 @@ article your instructor handed out.
     <TextArea id="tmf_final_write" rows="8"
               placeholder="Both movements discouraged drinking, but…" />
 
-    <!-- Progress affordance, three tiers. There is no longer a word minimum to
+    <!-- Progress affordance, two tiers. There is no longer a word minimum to
          hit: the conversation moves on as soon as the student has really begun,
          so tier 1 is encouragement rather than a countdown. The live word count
          is gone with it — a number under a textarea reads as a target to reach
-         and stop at, which is exactly the behaviour a hard minimum produced. -->
+         and stop at, which is exactly the behaviour a hard minimum produced.
+         The second tier only ever claims what it actually checked (length);
+         quality is handed back to the student as a read-it-back checklist. A
+         former third tier said "✓ That's a full comparison" at 80 words, which
+         was dishonest — length isn't a comparison. -->
     <Markdown when="wordcount(@tmf_final_write.value) &lt; 40">
 *A solid comparison usually takes four or five sentences — keep going.*
     </Markdown>
-    <Markdown when="wordcount(@tmf_final_write.value) &gt;= 40 &amp;&amp; wordcount(@tmf_final_write.value) &lt; 80">
+    <Markdown when="wordcount(@tmf_final_write.value) &gt;= 40">
 *✓ You can continue. Before you do, read it back: does it name **one way the movements are alike** and **one way they differ**? Does it draw on **all three texts** — the textbook, the lithograph, and the article?*
-    </Markdown>
-    <Markdown when="wordcount(@tmf_final_write.value) &gt;= 80">
-*✓ That's a full comparison.*
     </Markdown>
   </Vertical>
 
@@ -600,9 +608,12 @@ range of READ 1000 reading skills on **three real texts:**
 - **analyzing an image** as persuasion, and finally
 - **synthesizing** all three texts into four or five sentences comparing the historic temperance movement with today's approaches to drinking less.
 
-What you wrote above is the finished work — the comparison you built from all
-three texts.
+Here is the finished work — the comparison you built from all three texts.
     </Markdown>
+    <!-- The writing screen is behind us in the pane by now, so the conclusion
+         shows the comparison rather than pointing at a screen that has moved
+         on. <Use>, not a copy: same block, same state, still editable. -->
+    <Use ref="tmf_final_write" />
   </Vertical>
 
   <!-- ============================================================
