@@ -11,7 +11,7 @@ lang: en-Latn-US
 READ 1000 — Temperance  (Activity bank)
 
 A lo-blocks build of "Design_docs/Temperance/Temperance_Module_072826.pdf",
-with one deliberate departure the course team requested:
+with one deliberate departure from that document:
   * "Joe's notes" (the note-checking matrix) tests the TEXTBOOK excerpt, not
     the lecture.
 
@@ -365,13 +365,12 @@ all: Yes — that earlier sentence describes the intrusion (the middle class thr
 <!-- ============================================================
      Part 3 — Reading comprehension check (PDF p.30-34)
 
-     The five questions used to sit in a `tmf_comprehension` screen in the
-     activity pane, which put the questions exactly where the text would
-     otherwise be: a comprehension check with the passage nowhere in sight is
-     a memory test. They are now CHAT-EMBEDDED, one at a time with a peer
-     lead-in, on the same pattern as the vocabulary questions — and the pane
-     holds the text (tmf_comp_reading, below) for the whole stretch, so a
-     student answers with the excerpt open beside them.
+     The five questions are CHAT-EMBEDDED, one at a time with a peer lead-in,
+     on the same pattern as the vocabulary questions — deliberately not a pane
+     screen, which would put the questions exactly where the text should be:
+     a comprehension check with the passage nowhere in sight is a memory test.
+     The pane holds the text (tmf_comp_reading, below) for the whole stretch,
+     so a student answers with the excerpt open beside them.
 
      Each is a single-question MarkupProblem, so it carries its own Check
      button and per-item feedback and the chat can wait on .submitCount.
